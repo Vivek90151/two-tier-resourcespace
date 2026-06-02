@@ -13,9 +13,9 @@ body, html {
 }
 
 h1, h2 {color: #000000;}
-a:link {color:#666666;}
-a:visited {color:#666666;}
-a:hover {color:var(--colour-brand-primary-hover);}
+a:link {color: var(--colour-typography-900);}
+a:visited {color: var(--colour-typography-900);}
+a:hover {color: var(--colour-brand-primary-hover);}
 a:active {opacity:0.6;}
 
 input[readonly] {
@@ -281,7 +281,7 @@ div.autocomplete ul li {color: #000;}
     color: #999;
 }
 #modal .RecordHeader h1, #modal .BasicsBox h1 {
-    color: #333;
+    color: var(--colour-typography-900);
 }
 
 /* Messaging */
@@ -306,10 +306,7 @@ div.MessageBox a {
 #previewimage, #previewimagecopy, #contact-sheet--previewimage {box-shadow: 0 2px 6px rgba(0,0,0,0.2 );}
 
 .FeaturedSimpleTile {
-    background: rgba(30, 30, 30, 0.70);
-    color: #FFF;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-
 }
 .FeaturedSimpleTile:hover {
     box-shadow: 0 1px 10px 0 rgba(0,0,0,0.3);
@@ -495,10 +492,6 @@ input:focus, textarea:focus, select:focus, .RecordPanel .RecordDownloadSpace .Do
     border: unset;
     box-shadow: unset;
     background-color: unset;
-}
-
-.uppy-Dashboard-Item-previewInnerWrap {
-    background-color: #f2f2f2 !important;
 }
 
 .uppy-ProviderBrowserItem-inner {

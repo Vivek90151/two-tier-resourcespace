@@ -387,17 +387,18 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
 
 .HomePanel {
     display: flex;
-
+    
     background-color: var(--colour-surface-card-content-background);
     color: var(--colour-typography-900);
-    /* Desktop/Body/Default */
+
     font-family: "Atkinson Hyperlegible Next";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 140%; /* 22.4px */
+    line-height: 140%;
     border-radius: var(--space-4) var(--space-4);
     overflow: hidden;
+    min-width: 0;
     flex: 0 2.1 320px;
 }
 .thmbs-tile-img {
@@ -450,6 +451,7 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     align-items: center;
     height: 180px; 
     background: var(--colour-surface-card-icon-background);
+    width: 100%;
 }
 .tile-placeholder:hover{
     background: var(--colour-surface-card-icon-background-hover);
@@ -478,6 +480,9 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     height: 180px;
     border-radius: var(--space-4) var(--space-4) 0 0;
     background: var(--colour-surface-card-icon-background);
+}
+.tile-special-content:hover {
+    background: var(--colour-surface-card-icon-background-hover);
 }
 .tile-special-icon {
     position: relative;
@@ -515,7 +520,7 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 100%; /* 18px */
+    line-height: 100%;
 
     padding: 2px 5px;
 }
@@ -535,12 +540,11 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     align-items: flex-start;
     align-self: stretch;
 
-    /* Desktop/Header/H4 */
     /*font-family: Space Grotesk;*/
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 125%; /* 22.5px */
+    line-height: 125%;
     letter-spacing: -0.25px;
 }
 .tile-graph-container {
@@ -549,6 +553,9 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
 }
 .tile-graph-container.tile-pie-graph canvas{
     margin: auto;
+}
+.tile-graph-container.tile-line-graph {
+    height: auto;
 }
 .tile-graph-legend {
     display: flex;
@@ -586,7 +593,7 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 140%; /* 19.6px */
+    line-height: 140%;
 }
 .tile-summary {
     display: flex;
@@ -607,7 +614,7 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
-    line-height: 125%; /* 40px */
+    line-height: 125%;
 }
 .tile-summary > h2 {
     color: var(--colour-link-primary-default);
@@ -616,7 +623,7 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     font-size: 14.941px;
     font-style: normal;
     font-weight: 400;
-    line-height: 140%; /* 20.918px */
+    line-height: 140%;
 }
 div.tile-select {
     padding-bottom: var(--space-8);
@@ -654,6 +661,12 @@ div.tile-select {
 .tile-multi:hover .tile-sub-multi > div, .tile-multi:hover > .tile-placeholder {
     background: var(--colour-surface-card-icon-background-hover);
 } 
+.featured-tile {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+}
 .HomePanel.DashTile {
     display: flex;
 }
@@ -805,10 +818,11 @@ img[src$=".svg"]
     height: calc(100% - 66px);
     transition: height 0.25s ease;
     overflow-y: scroll;
+    /*background: var(--colour-surface-view-background);*/
 }
 
 #CentralSpaceContainer {
-    margin: 0 15px 60px;
+    margin-bottom: 60px;
     padding: 0 0 0 0;
     text-align:left;
 }
@@ -1150,7 +1164,7 @@ input[type="number"].NumberSearchWidth {width:80px; margin: 0 10px;}
 .RecordPanel p{padding:0; margin:0.5em 0 0.5em 0;}
 
 /* Basic page */
-.BasicsBox {margin: 15px 15px 15px 20px;}
+.BasicsBox {margin: 15px 15px 10px 20px;}
 .BasicsBox h1 {padding: 0 0 0.5em;}
 .BasicsBox h2 {font-size: 1.2em;margin-bottom: 4px;}
 .BasicsBox .HorizontalNav ul {padding:0.2em 0;margin:0 0 1.5em;list-style:none;}
@@ -1168,9 +1182,7 @@ input[type="number"].NumberSearchWidth {width:80px; margin: 0 10px;}
 .ThemeBox li {padding:0 0.35em 0 0;margin:0 0.5em 0.25em 0.25em;}
 
 /*Home styling */
-.FeaturedSimpleLinks > .HomePanel {margin:15px 15px 0 0;width: 250px;float: left; transition: max-height 0.4s ease;} 
 .HomePanelIN {padding: 15px;min-height: 150px; display:flex;}
-.HomePanel h2 {display:block; text-overflow: ellipsis;}
 .HomePanel p {margin: 0; padding: 5px 0 4px 0;}
 
 .HomePanelPromotedImageWrap {text-align:center;min-height:155px;vertical-align:middle;}
@@ -1358,26 +1370,13 @@ div.autocomplete ul li {
 }
 
 #uploader .uppy-size--md .uppy-DashboardContent-addMore {
-    margin-right: 25px;
+    margin-right: -4px;
 }
 
 
 .uppy-Dashboard-browse{
     font-size: 20px;
     margin-bottom: 8px;
-}
-
-.uppy-DashboardContent-addMore svg{
-    display:none;
-}
-
-.uppy-size--xl .uppy-Dashboard-Item {
-    width: calc(10% - 30px);
-    height: 125px;
-}
-
-.uppy-size--xl .uppy-Dashboard-Item-preview {
-    height: 60px;
 }
 
 .uppy-Dashboard-Item-preview img.uppy-Dashboard-Item-previewImg {
@@ -1637,10 +1636,7 @@ input.contactadminbutton  {
 }
 
 /* Dash Styling */
-#HomePanelContainer {
-    container-name: dash-container;
-    container-type: inline-size;
-    
+#HomePanelContainer {    
     padding-top: var(--space-24);
     display: flex;
     width: 100%;
@@ -1650,7 +1646,6 @@ input.contactadminbutton  {
     align-items: stretch;
     gap: var(--space-32);
     background-color: var(--colour-surface-view-background);
-    justify-content: center;
     margin: 0 auto;
 }
 
@@ -1663,12 +1658,10 @@ a.HomePanel:hover {
     border-radius:8px;
 }
 
-.HomePanelDynamicDash p.tile_corner_box {
+p.tile_corner_box {
     position: absolute;
     top: 130px;
     left: 10px;
-    padding: 2px 10px;
-    font-size: 1.5em;
 
     display: inline-flex;
     height: 26px;
@@ -1682,7 +1675,7 @@ a.HomePanel:hover {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 21px */
+    line-height: 150%;
 
     border-radius: var(--space-4);
     background: var(--colour-transparency-black-50);
@@ -1769,12 +1762,12 @@ a.HomePanel:hover {
 .DoubleWidthDashTile .tile-summary > p{
     font-size: 64px;
     font-weight: 500;
-    line-height: 125%; /* 80px */
+    line-height: 125%;
 }
 .DoubleWidthDashTile .tile-summary > h{
     font-size: 18px;
     font-weight: 400;
-    line-height: 140%; /* 25.2px */
+    line-height: 140%;
 }
 .DoubleWidthDashTile .tile-graph {
     flex: 1 1 0;
@@ -1795,7 +1788,6 @@ a.HomePanel:hover {
     gap: var(--space-8);
     flex: 1 0 0;
     border-radius: var(--space-4);
-    /*background: var(--colour-surface-200);*/
 }
 
 .DashTileActions .tool {
@@ -1810,7 +1802,7 @@ a.HomePanel:hover {
     background: var(--colour-surface-200);
 }
 
-@container dash-container (max-width:1377px) { /* Currently adjusted to accommodate the search bar, should be 1366px */
+@media (max-width:1366px) { /* Currently adjusted to accommodate the search bar, should be 1366px */
     .HomePanel {
         flex: 0 2.1 302px;
     }
@@ -1839,7 +1831,7 @@ a.HomePanel:hover {
         height: 160px;
     }
 }
-@container dash-container  (max-width:768px) { /* Currently adjusted to accommodate the search bar, should be 768px */
+@media (max-width:768px) {
     .HomePanel {
         flex: 0 2.1 360px;
     }
@@ -1878,7 +1870,7 @@ a.HomePanel:hover {
         font-size: 14.941px;
     }
 }
-@container dash-container  (max-width:360px) {
+@media (max-width:360px) {
     .HomePanel, .DoubleWidthDashTile {
         flex: 1 0 202px;
     }
@@ -2269,18 +2261,70 @@ div.MessageBox a {
     text-align: center;
     font-size: 16px;
 }
-
-.FeaturedSimpleLinks {
-    display: table;
-    width:100%;
+.fc-breadcrumbs {
+    width: 100%;
+    position: relative;
+    padding: var(--space-12) 0;
+    justify-content: center;
+    background: var(--colour-surface-breadcrumb-background);
+}
+.fc-breadcrumbs a {
+    font-family: "Atkinson Hyperlegible Next";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+.fc-breadcrumbs .BreadcrumbsBox {
+    width: 100%;
+    padding: 0 var(--space-272);
+    background-color: unset;
+    color: var(--colour-brand-primary-default);
+}
+.fc-breadcrumbs .BreadcrumbsBoxTheme {
+    margin: 0;
+}
+.fc-breadcrumbs .BreadcrumbsBox.BreadcrumbsBoxTheme .top-right-menu i {
+    vertical-align: middle;
+}
+.fc-breadcrumbs .BreadcrumbsBoxTheme.BreadcrumbsBox a:visited,
+.fc-breadcrumbs .BreadcrumbsBoxTheme.BreadcrumbsBox a:active,
+.fc-breadcrumbs .BreadcrumbsBoxTheme.BreadcrumbsBox a:link{
+    color: var(--colour-brand-primary-default);
 }
 
-.FeaturedSimpleTile {
-    position: relative;
-    margin-top: 10px;
-    height: 160px;
-    border-radius:8px;
-    overflow: hidden;
+.FeaturedSimpleLinks {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: var(--space-32);
+    width:100%;
+    max-width: 1376px;
+    margin: 0 auto;
+    padding-top: var(--space-24);
+}
+.BasicsBox.FeaturedSimpleLinks h2{
+    color: var(--colour-typography-900);
+    /* Desktop/Header/H4 */
+    /*font-family: "Space Grotesk";*/
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%; /* 22.5px */
+    letter-spacing: -0.25px;
+    margin-bottom: 0;
+}
+.FeaturedSimpleLinks a {
+    display: flex;
+}
+.FeaturedSimpleTile:hover {
+    text-decoration: none;
 }
 .FeaturedSimpleTile.DashTile {
     display: block;
@@ -2304,7 +2348,9 @@ div.MessageBox a {
 .FeaturedSimpleLinks .FeaturedSimpleTileContents {
     width:100%;
     height:100%;
-    display: table;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 .FeaturedSimpleTileText {
@@ -2317,11 +2363,12 @@ div.MessageBox a {
 }
    
 .FeaturedSimpleLink{
-    position: absolute;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: var(--space-48);
     z-index: 1;
+    background-color: var(--colour-surface-card-content-background);
+    align-items: center;
 }
  
 a.FeaturedSimpleLink:hover, a.FeaturedSimpleLink:active  { 
@@ -2370,10 +2417,18 @@ a.FeaturedSimpleLink:hover, a.FeaturedSimpleLink:active  {
     grid-template-areas: "box";
 }
 .FeaturedSimpleTile .FeaturedSimpleLink:has(+ .top-right-menu) { grid-area: box; }
+.FeaturedSimpleTile .tile-desc {
+    display: flex;
+    flex-direction: row;
+    align-items: initial;
+}
+.FeaturedSimpleTile .tile-desc > .top-right-menu {
+    margin: 0;
+    margin-left: auto;
+}
 .FeaturedSimpleTile .top-right-menu {
     grid-area: box;
     place-self: start end;
-    display: none;
     margin: 4px;
     width: 28px;
     height: 28px;
@@ -2382,6 +2437,7 @@ a.FeaturedSimpleLink:hover, a.FeaturedSimpleLink:active  {
     font-size: 20px;
     cursor: pointer;
     z-index: 1;
+    display: flex;
 }
 .FeaturedSimpleTile:hover .top-right-menu { display: block; }
 .FeaturedSimpleLinks .context-menu-container {
@@ -3721,6 +3777,42 @@ div.slide:not([style]) {
 }
 
 /* ===== New UI elements ===== */
+
+.main-content {
+    width: 1376px;
+    margin: 0 auto;
+    padding-top: var(--space-36);
+}
+
+.page-title {
+    width: 100%;
+    position: relative;
+    padding: var(--space-16) 0 var(--space-8) 0;
+    background: var(--colour-surface-page-title-background);
+}
+.page-title h1 {
+    width: 1376px;
+    margin: 0 auto;
+    color: var(--colour-typography-900);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: -0.25px;
+    padding: 0 0 var(--space-8) 0;
+}
+
+.page-title p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    color: var(--colour-typography-900);
+    width: 1376px;
+    margin: 0 auto;
+    padding-bottom: var(--space-12);
+}
+
 
 .default-icon-size {
     width: 24px;
@@ -6056,4 +6148,20 @@ body:has(.collection-bar-holder.state-thumbs) #UICenter {
         width: calc(100% - 6px);
     }
 
+}
+
+@media(max-width: 1420px) {
+    .page-title {
+        padding-left: 16px;
+        padding-right: 16px;
+        width: unset;
+    }
+    .page-title h1, .page-title p {
+        width: unset;
+    }
+    .main-content {
+        padding-left: 16px;
+        padding-right: 16px;
+        width: unset;
+    }
 }
