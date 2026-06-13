@@ -1320,18 +1320,18 @@ div.autocomplete ul li {
 .dynamickeywords {float:left;}
 .keywordsselected {margin-top:10px;}
 
-#ProcessingBox
-    {
+#ProcessingBox {
     position: absolute;
-    top:300px;
-    left: 30%;
+    top: 300px;
+    left: calc(50% - 216px);
     font-size:200%;
-    width:450px;
-    padding:20px 30px;
+    width: 400px;
+    padding: var(--space-16);
     z-index:99999;
     display:none;
     border-radius:5px;
-    }
+    box-shadow: var(--effect-style-elevation-level-1-shadow);
+}
 
 #ProcessingBox h3
     {
@@ -3142,7 +3142,13 @@ select.MultiSelect:before {
 .Question table td:has(> input[type="checkbox"]) { vertical-align: bottom; }
 .Question td > label{ margin-top: 0.1em; width: auto; }
 
-input[name="antispam_user_code"] { position: absolute; left: -2000px; }
+input[name="antispam_user_code"] {
+    display: none;
+}
+
+#antispam {
+    max-width: 420px;
+}
 
 /* Update Preview button for MultiRTypeSelect */
 .Question .updatePreviewButton {
@@ -3336,12 +3342,6 @@ input[type="text"]#iconpicker-input {
     letter-spacing: -0.64px;
 }
 
-#HomeSiteText h1,
-#HomeSiteText p {
-    display: flex;
-    align-items: flex-start;
-}
-
 #HomeSiteText h1 {
     padding-bottom: var(--space-12, 12px);
     font-size: 48px;
@@ -3358,7 +3358,7 @@ input[type="text"]#iconpicker-input {
     position: relative;
     display: flex;
     aspect-ratio: 3 / 1;
-    max-height: 640px;
+    max-height: 600px;
 }
 
 .hero-banner-progress {
@@ -4942,6 +4942,15 @@ header.LoginHeader {
         gap: var(--space-20);
         flex-wrap: wrap;
     }
+
+    #header-container a.UploadButton {
+        width: unset;
+        padding: 0 var(--space-16);
+    }
+
+    #header-container a.UploadButton span {
+        display: flex;
+    }
 }
 
 /* Tablet */
@@ -5086,12 +5095,7 @@ header.LoginHeader {
     }
 
     #header-container a.UploadButton {
-        width: unset;
-        padding: 0 var(--space-16);
-    }
-
-    #header-container a.UploadButton span {
-        display: flex;
+        margin-left: var(--space-12);
     }
 }
 
