@@ -24,7 +24,7 @@ if ($sensitive_images_field>0)
 function SensitiveImageResultsReplace($collection)
     {
     // Blur image in search results and collections bar
-    global $sensitive_images_field, $sensitive_images_blur_level, $result, $n;
+    global $sensitive_images_field, $sensitive_images_blur_level, $result, $n, $display;
     if ($sensitive_images_field>0 && isset($result[$n]["field" . $sensitive_images_field]))
         {
         $sensitive=$result[$n]["field" . $sensitive_images_field];
@@ -41,11 +41,10 @@ function SensitiveImageResultsReplace($collection)
                 content: '!';
                 z-index: 5;
                 position: absolute;
-                left: 50%;
-                top: 40%;
-                transform: translate( -50%, -50% );
                 color: white;
-                font-size: <?php echo $collection ? "20px" : "50px"; ?> !important;
+                font-size: <?php echo $display == "xlthumbs" ? "80px" : "50px"; ?> !important;
+                margin-left: <?php echo $display == "xlthumbs" ? "153px" : "94px"; ?>;
+                margin-top: <?php echo $display == "xlthumbs" ? "145px" : "110px"; ?>;
                 }
             <?php } ?>
             </style>

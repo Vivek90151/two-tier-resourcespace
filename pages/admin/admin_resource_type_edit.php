@@ -243,11 +243,11 @@ if (isset($saved) && $saved) {
                 </div>
             <?php }
 
-            render_dropdown_question($lang['property-tab_name'], 'tab', get_tab_name_options(), $restypedata['tab']);
+            render_dropdown_question($lang['property-tab_name'], 'tab', get_tab_name_options(), $restypedata['tab'] ?? 0);
 
             $MARKER_COLORS[-1] = $lang["select"];
             ksort($MARKER_COLORS);
-            render_dropdown_question($lang['resource_type_marker_colour'], "colour", $MARKER_COLORS, $restypedata["colour"], '', array("input_class" => "stdwidth"));
+            render_dropdown_question($lang['resource_type_marker_colour'], "colour", $MARKER_COLORS, $restypedata["colour"] ?? -1, '', array("input_class" => "stdwidth"));
             config_boolean_select("push_metadata", $lang["property-push_metadata"], (int)$restypedata["push_metadata"], '', 420, null, false, null, false, $lang["information-push_metadata"]);
             config_boolean_select("pull_images", $lang["pull_images"], (int)$restypedata["pull_images"], '', 420, null, false, null, false, $lang["pull_images_text"]);
             ?>

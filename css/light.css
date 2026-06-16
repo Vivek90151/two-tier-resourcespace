@@ -9,7 +9,7 @@
 /* Default text and background colour */
 body, html {
     color:#474747;
-    background: var(--colour-neutral-300);
+    background: var(--colour-surface-view-background);
 }
 
 h1, h2 {color: #000000;}

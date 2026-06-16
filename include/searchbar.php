@@ -551,16 +551,26 @@ $selected_search_tab = getval("selected_search_tab", "search");
                                     return;
                                 }
 
-                                const checkApplicableResourceTypes = rt => field.applicable_resource_types.includes(rt);
-                                const checkSingleResourceType = (
-                                    selected_resource_types.length === 1
-                                    && selected_resource_types.some(checkApplicableResourceTypes)
-                                );
-                                const checkMultipleResourceTypes = (
-                                    selected_resource_types.length === field.applicable_resource_types.length
-                                    && selected_resource_types.every(checkApplicableResourceTypes)
-                                );
-                                const showField = checkSingleResourceType || checkMultipleResourceTypes;
+                                /*
+                                +---------------------------+------------------------------+-----------+-----------------------------------------------+
+                                | selected_resource_types   | field.applicable_resource... | showField | Reason                                        |
+                                +---------------------------+------------------------------+-----------+-----------------------------------------------+
+                                | ['photo']                 | ['photo']                    | true      | Exact match                                   |
+                                | ['photo']                 | ['photo','video']            | true      | Selected is a subset                          |
+                                | ['photo']                 | ['video']                    | false     | Inapplicable type selected                    |
+                                | ['photo','video']         | ['photo','video']            | true      | Exact match                                   |
+                                | ['photo','video']         | ['photo','video','audio']    | true      | Selected is a subset                          |
+                                | ['photo','video']         | ['photo']                    | false     | 'video' missing                               |
+                                | ['photo','video']         | ['video']                    | false     | 'photo' missing                               |
+                                | ['photo','audio']         | ['photo','video','audio']    | true      | Selected is a subset                          |
+                                | ['photo','audio']         | ['photo','video']            | false     | 'audio' missing                               |
+                                | ['photo','video','audio'] | ['photo','video','audio']    | true      | Exact match                                   |
+                                | ['photo','video','audio'] | ['photo','video']            | false     | 'audio' missing                               |
+                                +--------------------------+------------------------------+-----------+-----------------------------------------------+
+                                Note: the table is using human friendly names. Know that the code is using IDs instead; 
+                                */
+                                const showField = selected_resource_types.length > 0
+                                    && selected_resource_types.every(rt => field.applicable_resource_types.includes(rt));
                                 console.debug('selected_resource_types = %o', selected_resource_types);
                                 console.debug('field.applicable_resource_types = %o', field.applicable_resource_types);
                                 console.debug('showField = %o', showField);

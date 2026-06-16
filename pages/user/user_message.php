@@ -245,7 +245,7 @@ if (isset($_SERVER["HTTP_REFERER"]) && strpos($_SERVER["HTTP_REFERER"], "team_us
         ?>
         <div class="Question">
             <label for="messagetext"><?php echo escape($lang["message"]); ?></label>
-            <textarea id="messagetext" name="messagetext" class="stdwidth Inline required" rows=5 cols=50></textarea>
+            <textarea id="messagetext" name="messagetext" class="stdwidth Inline" rows=5 cols=50></textarea>
             <div class="clearerleft"></div>
         </div>
         <div class="QuestionSubmit">        

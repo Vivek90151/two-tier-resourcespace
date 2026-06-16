@@ -58,7 +58,7 @@ if (isset($user_pref_appearance) && !(isset($high_contrast_mode) && $high_contra
             --colour-surface-mode-surface: var(--colour-neutral-850);
             --colour-surface-page-title-background: var(--colour-neutral-850);
             --colour-surface-uploader-background: var(--colour-surface-200);
-            --colour-surface-view-background: var(--colour-surface-100)
+            --colour-surface-view-background: var(--colour-surface-100);
 
             /* Colours - Typography - Dark */
             --colour-typography-50: var(--colour-neutral-1000);
@@ -95,7 +95,6 @@ if (isset($user_pref_appearance) && !(isset($high_contrast_mode) && $high_contra
 
         body, html {
             color: white;
-            background: #262626;
         }
         h1, h2 {
             color: white;

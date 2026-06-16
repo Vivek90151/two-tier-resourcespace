@@ -111,13 +111,15 @@ if (isset($remote_config_url, $remote_config_key) && (isset($_SERVER["HTTP_HOST"
         # Local cache exists and has not expired. Use this copy.
         debug("[boot.php] Using local cached version of remote config. \$remote_config_expiry = {$remote_config_expiry}");
     } elseif (function_exists('curl_init')) {
+        $generate_remote_cfg_sign = static fn(string $data): string => hash_hmac('sha256', $data, $remote_config_key);
+
         # Cache not present or has expired.
         # Fetch new config and store. Set a very low timeout of 2 seconds so the config server going down does not take down the site.
         # Attempt to fetch the remote contents but suppress errors.
         if (isset($remote_config_function) && is_callable($remote_config_function)) {
             $rc_url = $remote_config_function($remote_config_url, $host);
         } else {
-            $rc_url = $remote_config_url . "?host=" . urlencode($host) . "&sign=" . md5($remote_config_key . $host);
+            $rc_url = $remote_config_url . "?host=" . urlencode($host) . "&sign=" . $generate_remote_cfg_sign($host);
         }
 
         $ch = curl_init();
@@ -136,15 +138,15 @@ if (isset($remote_config_url, $remote_config_key) && (isset($_SERVER["HTTP_HOST"
         if (!curl_errno($ch)) {
             # Fetch remote config was a success.
             # Validate the return to make sure it's an expected config file
-            # The last 33 characters must be a hash and the sign of the previous characters.
+            # The last 65 characters must be a hash and the sign of the previous characters.
             if (isset($remote_config_decode) && is_callable($remote_config_decode)) {
                 $r = $remote_config_decode($r);
             }
-            $sign = substr($r, -32); # Last 32 characters is a signature
+            $sign = substr($r, -64); # Last 64 characters is the signature
 
-            $r = substr($r, 0, strlen($r) - 33);
+            $r = substr($r, 0, strlen($r) - 65);
 
-            if ($sign === md5($remote_config_key . $r)) {
+            if ($sign === $generate_remote_cfg_sign($r)) {
                 $remote_config = $r;
                 set_sysvar($remote_config_sysvar, $remote_config);
             } else {
@@ -166,7 +168,7 @@ if (isset($remote_config_url, $remote_config_key) && (isset($_SERVER["HTTP_HOST"
     # Load and use the config
     eval($remote_config);
     // Cleanup
-    unset($remote_config_function, $remote_config_url, $remote_config_key);
+    unset($remote_config_function, $remote_config_url, $remote_config_key, $generate_remote_cfg_sign);
 }
 
 if ($system_download_config_force_obfuscation && !defined("SYSTEM_DOWNLOAD_CONFIG_FORCE_OBFUSCATION")) {
