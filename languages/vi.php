@@ -2276,7 +2276,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'Liên kết chia
 $lang['systemconfig_option_not_allowed_error'] = 'Tùy chọn không được phép! Vui lòng liên hệ với quản trị viên hệ thống';
 $lang['systemconfig_comments'] = 'Bình luận tài nguyên';
 $lang['systemconfig_featured_collections'] = 'Bộ sưu tập nổi bật';
-$lang['systemconfig_themes_simple_view'] = 'Bật chế độ xem đơn giản cho Bộ sưu tập nổi bật';
 $lang['systemconfig_themes_category_split_pages'] = 'Hiển thị các danh mục Bộ sưu tập Nổi bật dưới dạng liên kết, và các Bộ sưu tập Nổi bật trên các trang riêng biệt?';
 $lang['systemconfig_theme_category_levels'] = 'Có bao nhiêu cấp độ danh mục chủ đề để hiển thị?';
 $lang['systemconfig_enable_themes'] = 'Kích hoạt Bộ sưu tập Nổi bật';

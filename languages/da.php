@@ -2158,7 +2158,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Forsinkelse (i sekunde
 $lang['systemconfig_option_not_allowed_error'] = 'Mulighed ikke tilladt! Kontakt venligst systemadministratoren';
 $lang['systemconfig_comments'] = 'Ressourcekommentarer';
 $lang['systemconfig_featured_collections'] = 'Udvalgte samlinger';
-$lang['systemconfig_themes_simple_view'] = 'Aktivér simpel visning af fremhævede samlinger';
 $lang['systemconfig_themes_category_split_pages'] = 'Vis fremhævede samling kategorier som links, og fremhævede samlinger på separate sider?';
 $lang['systemconfig_theme_category_levels'] = 'Hvor mange niveauer af tema-kategori skal vises?';
 $lang['systemconfig_enable_themes'] = 'Aktivér Udvalgte Samlinger';

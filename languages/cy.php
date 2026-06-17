@@ -2213,7 +2213,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'Mae dolenni rhan
 $lang['systemconfig_option_not_allowed_error'] = 'Dewis ddim yn caniatáu! Cysylltwch â\'r gweinydd system';
 $lang['systemconfig_comments'] = 'Sylwadau adnodd';
 $lang['systemconfig_featured_collections'] = 'Casgliadau Nodweddiadol';
-$lang['systemconfig_themes_simple_view'] = 'Galluogi golygfa syml o Gasgliadau Nodweddiadol';
 $lang['systemconfig_themes_category_split_pages'] = 'Dangos categoriadau Casgliadau Nodweddedig fel dolenni, a Chasgliadau Nodweddedig ar dudalennau ar wahân?';
 $lang['systemconfig_theme_category_levels'] = 'Faint o lefelau categori thema i\'w dangos?';
 $lang['systemconfig_enable_themes'] = 'Galluogwch Gasgliadau Nodweddiadol';

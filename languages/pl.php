@@ -1846,7 +1846,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Opóźnienie (w sekund
 $lang['systemconfig_option_not_allowed_error'] = 'Opcja niedozwolona! Skontaktuj się z administratorem systemu';
 $lang['systemconfig_comments'] = 'Komentarze zasobów';
 $lang['systemconfig_featured_collections'] = 'Polecane kolekcje';
-$lang['systemconfig_themes_simple_view'] = 'Włącz prosty widok wyróżnionych kolekcji';
 $lang['systemconfig_themes_category_split_pages'] = 'Wyświetlaj kategorie Wyróżnionych Kolekcji jako linki, a Wyróżnione Kolekcje na osobnych stronach?';
 $lang['systemconfig_theme_category_levels'] = 'Ile poziomów kategorii motywu wyświetlić?';
 $lang['systemconfig_enable_themes'] = 'Włącz wybrane kolekcje';

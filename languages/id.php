@@ -2174,7 +2174,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Keterlambatan (dalam d
 $lang['systemconfig_option_not_allowed_error'] = 'Opsi tidak diizinkan! Silakan hubungi administrator sistem';
 $lang['systemconfig_comments'] = 'Komentar sumber daya';
 $lang['systemconfig_featured_collections'] = 'Koleksi Unggulan';
-$lang['systemconfig_themes_simple_view'] = 'Aktifkan tampilan sederhana Koleksi Unggulan';
 $lang['systemconfig_themes_category_split_pages'] = 'Tampilkan kategori Koleksi Unggulan sebagai tautan, dan Koleksi Unggulan pada halaman terpisah?';
 $lang['systemconfig_theme_category_levels'] = 'Berapa level kategori tema yang ingin ditampilkan?';
 $lang['systemconfig_enable_themes'] = 'Aktifkan Koleksi Unggulan';

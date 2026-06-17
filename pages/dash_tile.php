@@ -42,14 +42,9 @@ if ($submitdashtile && enforcePostRequest(false)) {
     if ($buildurl == "") {
         $new_buildurl_tltype        = getval('tltype', '');
         $new_buildurl_tlstyle       = getval('tlstyle', '');
-        $new_buildurl_tlstylecolour = urlencode(getval('tlstylecolour', ''));
 
         # No URL provided - build a URL (standard title types).
         $buildurl = "pages/ajax/dash_tile.php?tltype={$new_buildurl_tltype}&tlsize={$tlsize}&tlstyle={$new_buildurl_tlstyle}";
-
-        if ('' != $new_buildurl_tltype && allow_tile_colour_change($new_buildurl_tltype) && '' != $new_buildurl_tlstylecolour) {
-            $buildurl .= "&tlstylecolour={$new_buildurl_tlstylecolour}";
-        }
 
         $promoted_image = getval('promoted_image', '');
         if ('' != trim($promoted_image)) {
@@ -113,33 +108,9 @@ if ($submitdashtile && enforcePostRequest(false)) {
         #Change of tilestyle?
         $tile_style     = getval('tlstyle', false);
         $promoted_image = getval('promoted_image', false);
-        $tlstylecolour  = urlencode(getval('tlstylecolour', ''));
 
         if ($tile_style) {
             $buildurl = str_replace("tlstyle=" . $buildstring["tlstyle"], "tlstyle=" . $tile_style, $tile["url"]);
-
-            // If style changed and we can no longer support tile colours, remove it from url
-            if (!allow_tile_colour_change($buildstring['tltype'], $tile_style) && isset($buildstring['tlstylecolour'])) {
-                $buildurl = str_replace("&tlstylecolour={$buildstring['tlstylecolour']}", '', $buildurl);
-            }
-
-            // Style changed and we support tile colours
-            if (allow_tile_colour_change($buildstring['tltype'], $tile_style) && '' != trim($tlstylecolour)) {
-                if (isset($buildstring['tlstylecolour'])) {
-                    $buildurl = str_replace('tlstylecolour=' . urlencode($buildstring['tlstylecolour']), "tlstylecolour={$tlstylecolour}", $buildurl);
-                } else {
-                    $buildurl .= "&tlstylecolour={$tlstylecolour}";
-                }
-            }
-        } else {
-            // Allow changing colours for tile types that don't have a style (e.g ftxt)
-            if (allow_tile_colour_change($buildstring['tltype']) && '' != trim($tlstylecolour)) {
-                if (isset($buildstring['tlstylecolour'])) {
-                    $buildurl = str_replace("tlstylecolour=" . urlencode($buildstring['tlstylecolour']), "tlstylecolour={$tlstylecolour}", $buildurl);
-                } else {
-                    $buildurl .= "&tlstylecolour={$tlstylecolour}";
-                }
-            }
         }
 
         if ($promoted_image) {
@@ -225,24 +196,10 @@ if ($submitdashtile && enforcePostRequest(false)) {
  * For displaying a selector for the different styles of tile.
  * Styles are config controlled.
  */
-function tileStyle($tile_type, $existing = null, $tile_colour = '')
+function tileStyle(string $tile_type, string|null $existing = null): void
 {
-    global $lang,$tile_styles,$promoted_resource,$resource_count;
-
-    if (count($tile_styles[$tile_type]) < 2) {
-        // If this tile type allows for changing its colour, show it
-        if (allow_tile_colour_change($tile_type)) {
-            foreach ($tile_styles[$tile_type] as $style) {
-                if (allow_tile_colour_change($tile_type, $style)) {
-                    render_dash_tile_colour_chooser($style, $tile_colour);
-                }
-            }
-        }
-
-        return false;
-    }
+    global $lang,$tile_styles;
     ?>
-
     <div class="Question">
         <label for="tltype"><?php echo escape($lang["dashtilestyle"]);?></label> 
         <table>
@@ -278,15 +235,6 @@ function tileStyle($tile_type, $existing = null, $tile_colour = '')
             </tbody>
         </table>
         <div class="clearerleft"></div>
-        <?php
-        if (allow_tile_colour_change($tile_type)) {
-            foreach ($tile_styles[$tile_type] as $style) {
-                if (allow_tile_colour_change($tile_type, $style)) {
-                    render_dash_tile_colour_chooser($style, $tile_colour);
-                }
-            }
-        }
-        ?>
     </div>
     <?php
 }
@@ -301,7 +249,6 @@ $validpage = false;
 if ($create) {
     $tile_type                    = getval("tltype", "");
     $tile_style                   = getval('tlstyle', "");
-    $tile_nostyle                 = getval("nostyleoptions", false);
     $allusers                     = getval("all_users", false);
     $url                          = getval("url", "");
     $modifylink                   = getval("modifylink", false);
@@ -314,10 +261,6 @@ if ($create) {
 
     // Promoted resources can be available for search tiles (srch) and feature collection tiles (fcthm)
     $promoted_resource = (getval('promoted_resource', "") == "true");
-
-    if (!allow_tile_colour_change($tile_type, $tile_style)) {
-        $tile_nostyle = true;
-    }
 
     if ($tile_type == "srch") {
         $srch = getval("link", "");
@@ -351,7 +294,6 @@ if ($create) {
                 $title          = $returned_title['name'];
             }
         }
-        $tile_style_colour = '';
     }
 
     $pagetitle = $lang["createnewdashtile"];
@@ -382,14 +324,8 @@ if ($create) {
             $tile_type = $buildstring["tltype"];
             $tile_nostyle = isset($buildstring["tlstyle"]) && $tile_type != "conf" ? false : true;
             $tile_style = $buildstring["tlstyle"];
-
-            $tile_style_colour = '';
-            if (allow_tile_colour_change($tile_type) && isset($buildstring['tlstylecolour'])) {
-                $tile_style_colour = $buildstring['tlstylecolour'];
-            }
         } else {
             $tile_type = "";
-            $tile_nostyle = true;
         }
 
         if (!isset($tile_style)) {
@@ -513,16 +449,12 @@ if (!$validpage) {
             <?php
         }
 
-        if (!$tile_nostyle) {
+        if (in_array($tile_type, ['srch', 'fcthm'])) {
             if (isset($tile_style)) {
-                tileStyle($tile_type, $tile_style, $tile_style_colour);
+                tileStyle($tile_type, $tile_style);
             } else {
                 tileStyle($tile_type);
             }
-        }
-
-        if ($create && 'ftxt' == $tile_type && allow_tile_colour_change($tile_type)) {
-            render_dash_tile_colour_chooser('ftxt', '');
         }
 
         if ($tile_type == "srch") {

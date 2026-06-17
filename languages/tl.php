@@ -2296,7 +2296,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'Ang mga link par
 $lang['systemconfig_option_not_allowed_error'] = 'Hindi pinapayagan ang opsyon! Mangyaring makipag-ugnayan sa tagapangasiwa ng sistema';
 $lang['systemconfig_comments'] = 'Mga komento sa mapagkukunan';
 $lang['systemconfig_featured_collections'] = 'Mga Itinatampok na Koleksyon';
-$lang['systemconfig_themes_simple_view'] = 'Paganahin ang simpleng view ng Mga Itinatampok na Koleksyon';
 $lang['systemconfig_themes_category_split_pages'] = 'Ipakita ang mga kategorya ng Itinatampok na Koleksyon bilang mga link, at ang mga Itinatampok na Koleksyon sa hiwalay na mga pahina?';
 $lang['systemconfig_theme_category_levels'] = 'Ilang antas ng kategorya ng tema ang ipapakita?';
 $lang['systemconfig_enable_themes'] = 'Paganahin ang Mga Itinatampok na Koleksyon';

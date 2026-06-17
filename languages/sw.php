@@ -2267,7 +2267,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'Viungo vya kushi
 $lang['systemconfig_option_not_allowed_error'] = 'Chaguo haliruhusiwi! Tafadhali wasiliana na msimamizi wa mfumo';
 $lang['systemconfig_comments'] = 'Maoni ya rasilimali';
 $lang['systemconfig_featured_collections'] = 'Makusanyo Maarufu';
-$lang['systemconfig_themes_simple_view'] = 'Wezesha mwonekano rahisi wa Makusanyo Yaliyopendekezwa';
 $lang['systemconfig_themes_category_split_pages'] = 'Onyesha makundi ya Mkusanyiko Maarufu kama viungo, na Mkusanyiko Maarufu kwenye kurasa tofauti?';
 $lang['systemconfig_theme_category_levels'] = 'Ni ngazi ngapi za kategoria ya mandhari kuonyesha?';
 $lang['systemconfig_enable_themes'] = 'Wezesha Makusanyo Yaliyopendekezwa';

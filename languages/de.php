@@ -2226,7 +2226,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Verzögerung (in Sekun
 $lang['systemconfig_option_not_allowed_error'] = 'Option nicht erlaubt! Bitte kontaktieren Sie den Systemadministrator';
 $lang['systemconfig_comments'] = 'Ressourcenkommentare';
 $lang['systemconfig_featured_collections'] = 'Empfohlene Sammlungen';
-$lang['systemconfig_themes_simple_view'] = 'Aktiviere die einfache Ansicht für vorgestellte Sammlungen';
 $lang['systemconfig_themes_category_split_pages'] = 'Zeige die Kategorien der vorgestellten Sammlungen als Links an und die vorgestellten Sammlungen auf separaten Seiten?';
 $lang['systemconfig_theme_category_levels'] = 'Wie viele Ebenen der Themenkategorie sollen angezeigt werden?';
 $lang['systemconfig_enable_themes'] = 'Aktiviere vorgestellte Sammlungen';

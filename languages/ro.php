@@ -2156,7 +2156,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Întârziere (în secu
 $lang['systemconfig_option_not_allowed_error'] = 'Opțiunea nu este permisă! Vă rugăm să contactați administratorul sistemului';
 $lang['systemconfig_comments'] = 'Comentarii resurse';
 $lang['systemconfig_featured_collections'] = 'Coleții recomandate';
-$lang['systemconfig_themes_simple_view'] = 'Activare vizualizare simplă a colecțiilor recomandate';
 $lang['systemconfig_themes_category_split_pages'] = 'Afișați categoriile de colecții recomandate ca link-uri și Colecțiile recomandate pe pagini separate?';
 $lang['systemconfig_theme_category_levels'] = 'Câte niveluri de categorie tematică să fie afișate?';
 $lang['systemconfig_enable_themes'] = 'Activare colecții recomandate';

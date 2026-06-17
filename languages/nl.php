@@ -2176,7 +2176,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Vertraging (in seconde
 $lang['systemconfig_option_not_allowed_error'] = 'Optie niet toegestaan! Neem contact op met de systeembeheerder';
 $lang['systemconfig_comments'] = 'Resource opmerkingen';
 $lang['systemconfig_featured_collections'] = 'Uitgelichte Collecties';
-$lang['systemconfig_themes_simple_view'] = 'Inschakelen eenvoudige weergave van Uitgelichte Collecties';
 $lang['systemconfig_themes_category_split_pages'] = 'Toon categorieën van uitgelichte collecties als links en uitgelichte collecties op aparte pagina\'s weergeven?';
 $lang['systemconfig_theme_category_levels'] = 'Hoeveel niveaus van themacategorieën moeten worden weergegeven?';
 $lang['systemconfig_enable_themes'] = 'Inschakelen van Uitgelichte Collecties';

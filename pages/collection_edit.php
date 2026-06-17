@@ -324,7 +324,7 @@ include "../include/header.php";
                         $lang["background_image"],
                         "thumbnail_selection_method",
                         $configurable_options,
-                        $collection["thumbnail_selection_method"],
+                        $collection["thumbnail_selection_method"] ?? "",
                         'class="stdwidth"',
                         array(
                             "onchange" => "toggle_fc_bg_image_txt_input(this, " . $FEATURED_COLLECTION_BG_IMG_SELECTION_OPTIONS["manual"] . ");",

@@ -48,7 +48,6 @@ include "../../include/header.php";
                     "tltype"         => "ftxt",
                     "modifylink"     => "true",
                     "freetext"       => "Helpful tips here",
-                    "nostyleoptions" => "true",
                     "tile_audience"  => "true",
                     "link"           => "https://resourcespace.com/knowledge-base/",
                     "title"          => "Knowledge Base"
@@ -65,7 +64,6 @@ include "../../include/header.php";
                     "tlstyle"        => "upld",
                     "title"          => "Upload",
                     "freetext"       => "dashtile_upload",
-                    "nostyleoptions" => "true",
                     "tile_audience"  => "true",
                     "link"           => "pages/edit.php?ref=-[userref]&uploader=batch"
                 ]); ?>"

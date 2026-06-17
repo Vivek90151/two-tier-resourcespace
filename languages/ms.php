@@ -2296,7 +2296,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'Pautan perkongsi
 $lang['systemconfig_option_not_allowed_error'] = 'Pilihan tidak dibenarkan! Sila hubungi pentadbir sistem';
 $lang['systemconfig_comments'] = 'Komen sumber';
 $lang['systemconfig_featured_collections'] = 'Koleksi Pilihan';
-$lang['systemconfig_themes_simple_view'] = 'Aktifkan pandangan sederhana Koleksi Pilihan';
 $lang['systemconfig_themes_category_split_pages'] = 'Paparkan kategori Koleksi Terpilih sebagai pautan, dan Koleksi Terpilih pada halaman berasingan?';
 $lang['systemconfig_theme_category_levels'] = 'Berapa banyak tahap kategori tema yang perlu ditunjukkan?';
 $lang['systemconfig_enable_themes'] = 'Aktifkan Koleksi Pilihan';

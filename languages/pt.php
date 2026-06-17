@@ -2161,7 +2161,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Atraso (em segundos) a
 $lang['systemconfig_option_not_allowed_error'] = 'Opção não permitida! Por favor, entre em contato com o administrador do sistema';
 $lang['systemconfig_comments'] = 'Comentários de recursos';
 $lang['systemconfig_featured_collections'] = 'Coleções em Destaque';
-$lang['systemconfig_themes_simple_view'] = 'Ativar visualização simples de coleções em destaque';
 $lang['systemconfig_themes_category_split_pages'] = 'Exibir categorias de coleções em destaque como links e coleções em destaque em páginas separadas?';
 $lang['systemconfig_theme_category_levels'] = 'Quantos níveis de categoria de tema mostrar?';
 $lang['systemconfig_enable_themes'] = 'Ativar Coleções em Destaque';

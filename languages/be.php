@@ -2301,7 +2301,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'Спасылкі
 $lang['systemconfig_option_not_allowed_error'] = 'Опцыя не дазволена! Калі ласка, звяжыцеся з адміністратарам сістэмы';
 $lang['systemconfig_comments'] = 'Каментары да рэсурсаў';
 $lang['systemconfig_featured_collections'] = 'Выбраныя калекцыі';
-$lang['systemconfig_themes_simple_view'] = 'Уключыць просты выгляд выбраных калекцый';
 $lang['systemconfig_themes_category_split_pages'] = 'Паказваць катэгорыі вылучаных калекцый як спасылкі, а вылучаныя калекцыі на асобных старонках?';
 $lang['systemconfig_theme_category_levels'] = 'Колькі ўзроўняў катэгорыі тэмы паказваць?';
 $lang['systemconfig_enable_themes'] = 'Уключыць вылучаныя калекцыі';

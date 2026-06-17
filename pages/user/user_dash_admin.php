@@ -138,7 +138,18 @@ include "../../include/header.php";
         # Create New Tile (Has dtu or dta (hdta) permissions)
         if ($home_dash && checkPermission_dashcreate()) { ?>
             <p>
-                <a href="<?php echo $baseurl . "/pages/dash_tile.php?create=true&tltype=ftxt&modifylink=true&freetext=Helpful%20tips%20here&nostyleoptions=true&all_users=0&link=https://resourcespace.com/knowledge-base/&title=Knowledge%20Base";?>"><?php echo LINK_CARET ?><?php echo escape($lang["createdashtilefreetext"]); ?></a>
+                <a href="<?php echo generateURL(
+                        $baseurl . "/pages/dash_tile.php", 
+                        [
+                            "create"        => "true",
+                            "tltype"        => "ftxt",
+                            "modifylink"    => "true",
+                            "freetext"      => "Helpful tips here",
+                            "all_users"     => "0",
+                            "link"          => "https://resourcespace.com/knowledge-base/",
+                            "title"         => "Knowledge Base",
+                        ]
+                    ); ?>"><?php echo LINK_CARET ?><?php echo escape($lang["createdashtilefreetext"]); ?></a>
             </p>
             <?php
         }

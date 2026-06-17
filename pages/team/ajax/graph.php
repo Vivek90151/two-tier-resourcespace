@@ -178,7 +178,6 @@ if (!$from_dash) {
                     [
                         'create'         => true,
                         'title'          => $title,
-                        'nostyleoptions' => true,
                         'link'           => $report !== '' ? generateURL('pages/team/team_analytics_edit.php', ['ref' => $report]) : '',
                         'tltype'         => 'conf', 
                         'tlstyle'        => 'analytics',

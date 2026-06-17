@@ -2101,7 +2101,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Καθυστέρηση
 $lang['systemconfig_option_not_allowed_error'] = 'Η επιλογή δεν επιτρέπεται! Παρακαλούμε επικοινωνήστε με τον διαχειριστή του συστήματος';
 $lang['systemconfig_comments'] = 'Σχόλια πόρου';
 $lang['systemconfig_featured_collections'] = 'Προβεβλημένες Συλλογές';
-$lang['systemconfig_themes_simple_view'] = 'Ενεργοποίηση απλής προβολής επιλεγμένων συλλογών';
 $lang['systemconfig_themes_category_split_pages'] = 'Εμφάνιση των κατηγοριών της επιλεγμένης συλλογής ως συνδέσμους και εμφάνιση των επιλεγμένων συλλογών σε ξεχωριστές σελίδες;';
 $lang['systemconfig_theme_category_levels'] = 'Πόσα επίπεδα κατηγορίας θέματος να εμφανίζονται;';
 $lang['systemconfig_enable_themes'] = 'Ενεργοποίηση Επιλεγμένων Συλλογών';

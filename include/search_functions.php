@@ -563,6 +563,7 @@ function compile_search_actions($top_actions)
             $extraparams = array();
             $extraparams["create"] = "true";
             $extraparams["tltype"] = "srch";
+            $extraparams["tlstyle"] = "thmbs";
             $extraparams["freetext"] = "true";
 
             $data_attribute = array(

@@ -2145,7 +2145,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Kašnjenje (u sekundam
 $lang['systemconfig_option_not_allowed_error'] = 'Opcija nije dopuštena! Molimo kontaktirajte administratora sustava';
 $lang['systemconfig_comments'] = 'Komentari resursa';
 $lang['systemconfig_featured_collections'] = 'Istaknute zbirke';
-$lang['systemconfig_themes_simple_view'] = 'Omogući jednostavan prikaz istaknutih kolekcija';
 $lang['systemconfig_themes_category_split_pages'] = 'Prikaži kategorije Izdvojenih zbirki kao poveznice, a Izdvojene zbirke na zasebnim stranicama?';
 $lang['systemconfig_theme_category_levels'] = 'Koliko razina kategorija tema prikazati?';
 $lang['systemconfig_enable_themes'] = 'Omogući istaknute kolekcije';

@@ -428,11 +428,8 @@ button, input[type=submit], input[type=button], .RecordPanel .RecordDownloadSpac
     line-height: 125%;
     letter-spacing: -0.25px;
 }
-.tile-text-only h2 {
-    display: flex;
-    padding-bottom: var(--space-8);
-    align-items: flex-start;
-    align-self: stretch;
+.tile-freetext {
+    border-top: var(--space-8) solid var(--colour-surface-card-accent);
 }
 .tile-placeholder {
     display: flex;

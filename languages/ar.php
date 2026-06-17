@@ -2169,7 +2169,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'التأخير (بال
 $lang['systemconfig_option_not_allowed_error'] = 'الخيار غير مسموح به! يرجى الاتصال بمسؤول النظام';
 $lang['systemconfig_comments'] = 'تعليقات المصادر';
 $lang['systemconfig_featured_collections'] = 'مجموعات مميزة';
-$lang['systemconfig_themes_simple_view'] = 'تمكين عرض مجموعات المميزة بصورة بسيطة';
 $lang['systemconfig_themes_category_split_pages'] = 'عرض فئات المجموعات المميزة كروابط، وعرض المجموعات المميزة على صفحات منفصلة؟';
 $lang['systemconfig_theme_category_levels'] = 'كم عدد مستويات فئة السمات التي يجب عرضها؟';
 $lang['systemconfig_enable_themes'] = 'تمكين المجموعات المميزة';

@@ -2134,7 +2134,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Retard (en segons) des
 $lang['systemconfig_option_not_allowed_error'] = 'Opció no permesa! Si us plau, contacteu amb l\'administrador del sistema';
 $lang['systemconfig_comments'] = 'Comentaris del recurs';
 $lang['systemconfig_featured_collections'] = 'Col·leccions Destacades';
-$lang['systemconfig_themes_simple_view'] = 'Habilitar la vista simple de les col·leccions destacades';
 $lang['systemconfig_themes_category_split_pages'] = 'Mostrar les categories de col·leccions destacades com a enllaços i les col·leccions destacades en pàgines separades?';
 $lang['systemconfig_theme_category_levels'] = 'Quants nivells de categoria de temes vols mostrar?';
 $lang['systemconfig_enable_themes'] = 'Habilitar col·leccions destacades';

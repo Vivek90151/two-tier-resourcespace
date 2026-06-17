@@ -2280,7 +2280,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'असफल प्र
 $lang['systemconfig_option_not_allowed_error'] = 'विकल्प की अनुमति नहीं है! कृपया सिस्टम प्रशासक से संपर्क करें';
 $lang['systemconfig_comments'] = 'संसाधन टिप्पणियाँ';
 $lang['systemconfig_featured_collections'] = 'विशेष संग्रह';
-$lang['systemconfig_themes_simple_view'] = 'विशेष संग्रह सरल दृश्य सक्षम करें';
 $lang['systemconfig_themes_category_split_pages'] = 'विशेष संग्रह श्रेणियों को लिंक के रूप में प्रदर्शित करें, और विशेष संग्रह को अलग-अलग पृष्ठों पर?';
 $lang['systemconfig_theme_category_levels'] = 'थीम श्रेणी के कितने स्तर दिखाने हैं?';
 $lang['systemconfig_enable_themes'] = 'विशेष संग्रह सक्षम करें';

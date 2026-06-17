@@ -2860,7 +2860,6 @@ $lang['systemconfig_session_autologout'] = 'Automatically log user out at the en
 $lang['systemconfig_option_not_allowed_error'] = 'Option not allowed! Please contact system admin';
 $lang['systemconfig_comments'] = 'Resource comments';
 $lang['systemconfig_featured_collections'] = 'Featured Collections';
-$lang['systemconfig_themes_simple_view'] = 'Enable Featured Collections simple view';
 $lang['systemconfig_themes_category_split_pages'] = 'Display Featured Collection categories as links, and Featured Collections on separate pages?';
 $lang['systemconfig_theme_category_levels'] = 'How many levels of theme category to show?';
 $lang['systemconfig_enable_themes'] = 'Enable Featured Collections';

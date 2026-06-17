@@ -8,12 +8,13 @@ $is_search      = (isset($is_search) ? $is_search : false);
 $forsearchbar   = (isset($forsearchbar) ? $forsearchbar : false);
 $edit_autosave  = (isset($edit_autosave) ? $edit_autosave : false);
 
+$is_searchbar                      = ($forsearchbar ? 'searchbar_' : '');
 $hidden_input_elements             = '';
-$hidden_input_elements_id_prefix   = ($is_search ? 'nodes_searched_' : 'nodes_');
-$status_box_id                     = ($is_search ? "nodes_searched_{$field['ref']}_statusbox" : "nodes_{$field['ref']}_statusbox");
+$hidden_input_elements_id_prefix   = ($is_search ? ($is_searchbar . 'nodes_searched_') : ($is_searchbar . 'nodes_'));
+$status_box_id                     = ($is_search ? ($is_searchbar . "nodes_searched_{$field['ref']}_statusbox") : ($is_searchbar . "nodes_{$field['ref']}_statusbox"));
 $status_box_elements               = '';
 $update_result_count_function_call = 'UpdateResultCount();';
-$tree_id                           = ($is_search ? "search_tree_{$field['ref']}" : "tree_{$field['ref']}");
+$tree_id                           = ($is_search ? ($is_searchbar . "search_tree_{$field['ref']}") : ($is_searchbar . "tree_{$field['ref']}"));
 $tree_container_styling            = ($category_tree_open ? 'display: block;' : 'display: none;');
 
 $current_val_fieldname = "field_{$field['ref']}_currentval";

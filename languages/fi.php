@@ -2192,7 +2192,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Viive (sekunneissa) ep
 $lang['systemconfig_option_not_allowed_error'] = 'Vaihtoehto ei ole sallittu! Ota yhteyttä järjestelmänvalvojaan';
 $lang['systemconfig_comments'] = 'Resurssien kommentit';
 $lang['systemconfig_featured_collections'] = 'Esittelyssä olevat kokoelmat';
-$lang['systemconfig_themes_simple_view'] = 'Ota käyttöön esittelykokoelmien yksinkertainen näkymä';
 $lang['systemconfig_themes_category_split_pages'] = 'Näytä esittelyssä olevien kokoelmien kategoriat linkkeinä ja esittelyssä olevat kokoelmat erillisillä sivuilla?';
 $lang['systemconfig_theme_category_levels'] = 'Kuinka monta teeman kategoriaa näytetään?';
 $lang['systemconfig_enable_themes'] = 'Ota käyttöön esittelykokoelmat';

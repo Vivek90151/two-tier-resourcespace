@@ -46,6 +46,10 @@ function log_activity($note = null, $log_code = LOG_CODE_UNSPECIFIED, $value_new
         return;
     }
 
+    if ($value_old === []) {
+        $value_old = null;
+    }
+
     $parameters = array("i",$user,"s",(!LOG_CODE_validate($log_code) ? LOG_CODE_UNSPECIFIED : $log_code));
     $parameters[] = "s";
     $parameters[] = (is_null($note) ? null : $note);

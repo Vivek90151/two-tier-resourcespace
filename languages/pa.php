@@ -2267,7 +2267,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'ਬਾਹਰੀ 
 $lang['systemconfig_option_not_allowed_error'] = 'ਵਿਕਲਪ ਦੀ ਆਗਿਆ ਨਹੀਂ ਹੈ! ਕਿਰਪਾ ਕਰਕੇ ਸਿਸਟਮ ਪ੍ਰਬੰਧਕ ਨਾਲ ਸੰਪਰਕ ਕਰੋ';
 $lang['systemconfig_comments'] = 'ਸਰੋਤ ਟਿੱਪਣੀਆਂ';
 $lang['systemconfig_featured_collections'] = 'ਫੀਚਰਡ ਕਲੇਕਸ਼ਨਜ਼';
-$lang['systemconfig_themes_simple_view'] = 'ਫੀਚਰਡ ਕਲੈਕਸ਼ਨ ਸਧਾਰਨ ਦ੍ਰਿਸ਼ਟੀਯੋਗਤਾ ਨੂੰ ਯੋਗ ਕਰੋ';
 $lang['systemconfig_themes_category_split_pages'] = 'ਫੀਚਰਡ ਕਲੈਕਸ਼ਨ ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ ਲਿੰਕਾਂ ਵਜੋਂ ਦਿਖਾਓ, ਅਤੇ ਫੀਚਰਡ ਕਲੈਕਸ਼ਨ ਨੂੰ ਵੱਖਰੇ ਪੰਨਿਆਂ \'ਤੇ?';
 $lang['systemconfig_theme_category_levels'] = 'ਥੀਮ ਸ਼੍ਰੇਣੀ ਦੇ ਕਿੰਨੇ ਪੱਧਰ ਦਿਖਾਉਣੇ ਹਨ?';
 $lang['systemconfig_enable_themes'] = 'ਫੀਚਰਡ ਕਲੈਕਸ਼ਨ ਨੂੰ ਯੋਗ ਕਰੋ';

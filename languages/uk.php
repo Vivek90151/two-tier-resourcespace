@@ -2272,7 +2272,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'Посиланн
 $lang['systemconfig_option_not_allowed_error'] = 'Опція не дозволена! Будь ласка, зв\'яжіться з системним адміністратором';
 $lang['systemconfig_comments'] = 'Коментарі до ресурсів';
 $lang['systemconfig_featured_collections'] = 'Рекомендовані колекції';
-$lang['systemconfig_themes_simple_view'] = 'Увімкнути простий перегляд Рекомендованих колекцій';
 $lang['systemconfig_themes_category_split_pages'] = 'Відображати категорії Рекомендованих Колекцій як посилання, а Рекомендовані Колекції на окремих сторінках?';
 $lang['systemconfig_theme_category_levels'] = 'Скільки рівнів категорії теми показати?';
 $lang['systemconfig_enable_themes'] = 'Увімкнути Рекомендовані Колекції';

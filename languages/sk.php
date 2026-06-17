@@ -2009,7 +2009,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Oneskorenie (v sekund�
 $lang['systemconfig_option_not_allowed_error'] = 'Táto možnosť nie je povolená! Prosím kontaktujte administrátora systému';
 $lang['systemconfig_comments'] = 'Komentáre k zdrojom';
 $lang['systemconfig_featured_collections'] = 'Odporúčané zbierky';
-$lang['systemconfig_themes_simple_view'] = 'Povoliť jednoduché zobrazenie odporúčaných zbierok';
 $lang['systemconfig_themes_category_split_pages'] = 'Zobraziť kategórie odporúčaných zbierok ako odkazy a odporúčané zbierky na samostatných stránkach?';
 $lang['systemconfig_theme_category_levels'] = 'Koľko úrovní kategórie tém sa má zobraziť?';
 $lang['systemconfig_enable_themes'] = 'Povoliť odporúčané zbierky';

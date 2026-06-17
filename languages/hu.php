@@ -2230,7 +2230,6 @@ $lang['systemconfig_external_share_requires_password_label'] = 'A külső megosz
 $lang['systemconfig_option_not_allowed_error'] = 'A lehetőség nem engedélyezett! Kérlek, lépj kapcsolatba a rendszergazdával.';
 $lang['systemconfig_comments'] = 'Erőforrás megjegyzések';
 $lang['systemconfig_featured_collections'] = 'Kiemelt gyűjtemények';
-$lang['systemconfig_themes_simple_view'] = 'Kiemelt gyűjtemények egyszerű nézetének engedélyezése';
 $lang['systemconfig_themes_category_split_pages'] = 'Kiemelt gyűjtemény kategóriák megjelenítése linkekként, és a Kiemelt Gyűjtemények külön oldalon?';
 $lang['systemconfig_theme_category_levels'] = 'Hány szintű téma kategóriát mutassunk?';
 $lang['systemconfig_enable_themes'] = 'Kiemelt gyűjtemények engedélyezése';

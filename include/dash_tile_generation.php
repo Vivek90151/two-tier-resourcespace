@@ -480,7 +480,7 @@ function tile_icon(array $tile, string $tile_id): void
 function tile_freetext(array $tile, string|null $tile_id = null): void
 {
     ?>
-    <div class="tile-desc">
+    <div class="tile-desc tile-freetext">
         <h2><?php echo escape(i18n_get_translated($tile["title"])); ?></h2>
         <p><?php echo escape(i18n_get_translated($tile["txt"])); ?></p>
         <?php

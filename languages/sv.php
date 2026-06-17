@@ -2209,7 +2209,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Försening (i sekunder
 $lang['systemconfig_option_not_allowed_error'] = 'Alternativet är inte tillåtet! Vänligen kontakta systemadministratören';
 $lang['systemconfig_comments'] = 'Resurskommentarer';
 $lang['systemconfig_featured_collections'] = 'Utvalda samlingar';
-$lang['systemconfig_themes_simple_view'] = 'Aktivera enkel visning av utvalda samlingar';
 $lang['systemconfig_themes_category_split_pages'] = 'Visa utvalda kategorier för samlingar som länkar och utvalda samlingar på separata sidor?';
 $lang['systemconfig_theme_category_levels'] = 'Hur många nivåer av temakategori ska visas?';
 $lang['systemconfig_enable_themes'] = 'Aktivera utvalda samlingar';

@@ -2562,7 +2562,6 @@ $lang['systemconfig_session_autologout'] = '在會話結束時自動登出使用
 $lang['systemconfig_option_not_allowed_error'] = '不允許的選項！請聯絡系統管理員';
 $lang['systemconfig_comments'] = '資源註解';
 $lang['systemconfig_featured_collections'] = '精選集合';
-$lang['systemconfig_themes_simple_view'] = '啟用精選集合簡易檢視';
 $lang['systemconfig_themes_category_split_pages'] = '將精選集合類別顯示為連結，並在不同頁面上顯示精選集合？';
 $lang['systemconfig_theme_category_levels'] = '要顯示多少層的主題類別？';
 $lang['systemconfig_enable_themes'] = '啟用精選集合';

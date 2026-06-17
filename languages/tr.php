@@ -2259,7 +2259,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Başarısız denemeler
 $lang['systemconfig_option_not_allowed_error'] = 'Seçenek izin verilmiyor! Lütfen sistem yöneticisi ile iletişime geçin';
 $lang['systemconfig_comments'] = 'Kaynak yorumları';
 $lang['systemconfig_featured_collections'] = 'Öne Çıkan Koleksiyonlar';
-$lang['systemconfig_themes_simple_view'] = 'Öne Çıkan Koleksiyonlar basit görünümünü etkinleştir';
 $lang['systemconfig_themes_category_split_pages'] = 'Öne Çıkan Koleksiyon kategorilerini bağlantılar olarak ve Öne Çıkan Koleksiyonları ayrı sayfalarda göster?';
 $lang['systemconfig_theme_category_levels'] = 'Gösterilecek tema kategorisi seviyesi sayısı kaç?';
 $lang['systemconfig_enable_themes'] = 'Öne Çıkan Koleksiyonları Etkinleştir';

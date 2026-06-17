@@ -2143,7 +2143,6 @@ $lang['systemconfig_password_brute_force_delay_label'] = 'Délai (en secondes) a
 $lang['systemconfig_option_not_allowed_error'] = 'Option non autorisée ! Veuillez contacter l\'administrateur système';
 $lang['systemconfig_comments'] = 'Commentaires de ressources';
 $lang['systemconfig_featured_collections'] = 'Collections en vedette';
-$lang['systemconfig_themes_simple_view'] = 'Activer la vue simple des collections en vedette';
 $lang['systemconfig_themes_category_split_pages'] = 'Afficher les catégories de collections en vedette en tant que liens et les collections en vedette sur des pages distinctes ?';
 $lang['systemconfig_theme_category_levels'] = 'Combien de niveaux de catégorie de thème afficher ?';
 $lang['systemconfig_enable_themes'] = 'Activer les collections en vedette';

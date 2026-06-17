@@ -490,13 +490,8 @@ function get_default_dash($user_group_id = null, $edit_mode = false)
 
         $order += 10;
 
-        $tile_custom_style = '';
         $buildstring = explode('?', $tile['url']);
         parse_str(str_replace('&amp;', '&', ($buildstring[1] ?? "")), $buildstring);
-
-        if (isset($buildstring['tltype']) && allow_tile_colour_change($buildstring['tltype'], $buildstring['tlstyle']) && isset($buildstring['tlstylecolour'])) {
-            $tile_custom_style .= get_tile_custom_style($buildstring);
-        }
 
         if (in_array($tile['tile'], $hidden_tiles)) {
             $contents_tile_class .= $hidden_tile_class;
@@ -522,7 +517,7 @@ function get_default_dash($user_group_id = null, $edit_mode = false)
             class="HomePanel DashTile DashTileDraggable <?php echo $tile["allow_delete"] ? "" : "conftile";?>" 
             id="tile<?php echo escape($tile["tile"]);?>"
         >
-            <div id="contents_tile<?php echo escape($tile["tile"]);?>" class="HomePanelIN HomePanelDynamicDash <?php echo $contents_tile_class; ?>" style="<?php echo $tile_custom_style; ?>">
+            <div id="contents_tile<?php echo escape($tile["tile"]);?>" class="HomePanelIN HomePanelDynamicDash <?php echo $contents_tile_class; ?>">
                 <?php
                 if (strpos($tile["url"], "dash_tile.php") !== false) {
                     # Only pre-render the title if using a "standard" tile and therefore we know the H2 will be in the target data.
@@ -636,13 +631,9 @@ function get_managed_dash()
     );
 
     foreach ($tiles as $tile) {
-        $tile_custom_style = '';
         $buildstring = explode('?', $tile['url']);
         list($url_page, $buildstring) = $buildstring;
         parse_str(str_replace('&amp;', '&', $buildstring), $buildstring);
-        if (isset($buildstring['tltype']) && allow_tile_colour_change($buildstring['tltype'], $buildstring['tlstyle']) && isset($buildstring['tlstylecolour'])) {
-            $tile_custom_style .= get_tile_custom_style($buildstring);
-        }
         ?>
         <a 
             <?php
@@ -664,7 +655,7 @@ function get_managed_dash()
             class="HomePanel DashTile DashTileDraggable <?php echo 'double' == $tlsize ? 'DoubleWidthDashTile' : ''; ?>" 
             id="tile<?php echo escape($tile["tile"]);?>"
         >
-            <div id="contents_tile<?php echo escape($tile["tile"]);?>" class="HomePanelIN HomePanelDynamicDash <?php echo $buildstring['tlsize'] == 'double' ? 'DoubleWidthDashTile' : '' ;?>" style="<?php echo $tile_custom_style; ?>">
+            <div id="contents_tile<?php echo escape($tile["tile"]);?>" class="HomePanelIN HomePanelDynamicDash <?php echo $buildstring['tlsize'] == 'double' ? 'DoubleWidthDashTile' : '' ;?>">
                 <?php if (strpos($tile["url"], "dash_tile.php") !== false) {
                     # Only pre-render the title if using a "standard" tile and therefore we know the H2 will be in the target data.
                     ?>
@@ -1279,7 +1270,6 @@ function get_user_dash($user)
         }
 
         $order += 10;
-        $tile_custom_style = '';
         $buildstring = explode('?', $tile['url']);
 
         list($url_page, $buildstring) = $buildstring;
@@ -1300,9 +1290,6 @@ function get_user_dash($user)
         }
 
         $tlsize = (isset($buildstring['tlsize']) ? $buildstring['tlsize'] : '');
-        if (isset($buildstring['tltype']) && allow_tile_colour_change($buildstring['tltype'], $buildstring['tlstyle']) && isset($buildstring['tlstylecolour'])) {
-            $tile_custom_style .= get_tile_custom_style($buildstring);
-        }
         ?>
         <a 
             <?php
@@ -1326,7 +1313,7 @@ function get_user_dash($user)
             tile="<?php echo $tile['tile']; ?>"
             id="user_tile<?php echo escape($tile["user_tile"]);?>"
         >
-            <div id="contents_user_tile<?php echo escape($tile["user_tile"]);?>" class="HomePanelIN HomePanelDynamicDash <?php echo 'double' == $tlsize ? 'DoubleWidthDashTile' : ''; ?>" style="<?php echo $tile_custom_style; ?>">
+            <div id="contents_user_tile<?php echo escape($tile["user_tile"]);?>" class="HomePanelIN HomePanelDynamicDash <?php echo 'double' == $tlsize ? 'DoubleWidthDashTile' : ''; ?>">
                 <script>
                     jQuery(function() {
                         var height = jQuery("#contents_user_tile<?php echo escape($tile["user_tile"]);?>").height();
@@ -1577,116 +1564,6 @@ function build_dash_tile_list($dtiles_available)
             </td>
         </tr>
         <?php
-    }
-}
-
-/**
-* Check whether we allow a colour change of a tile from the interface.
-* At the moment it is only available for blank search tiles and text
-* text only tiles.
-*
-* @param string $tile_type
-* @param string $tile_style Examples: thmbs, multi, blank, ftxt
-*
-* @return boolean
-*/
-function allow_tile_colour_change($tile_type, $tile_style = '')
-{
-    global $tile_styles;
-
-    $allowed_styles = array('blank', 'ftxt');
-
-    // Check a specific style for a type
-    if ('' !== $tile_style && !in_array($tile_style, $allowed_styles)) {
-        return false;
-    }
-
-    // Is one of the allowed styles in the styles available for this tile type?
-    if (isset($tile_styles[$tile_type]) && 0 < count(array_intersect($tile_styles[$tile_type], $allowed_styles))) {
-        return true;
-    }
-
-    return false;
-}
-
-/**
-* Renders a new section to pick/ select a colour. User can either use the color
-* picker or select a colour from the ones already available (config option)
-*
-* @param string $tile_style
-* @param string $tile_colour Hexadecimal code (without the # sign). Example: 0A8A0E
-*
-* @return void
-*/
-function render_dash_tile_colour_chooser($tile_style, $tile_colour)
-{
-    global $lang, $baseurl;
-    
-    $tile_style  = escape($tile_style);
-    $tile_colour = escape($tile_colour);
-    ?>
-    <div id="tile_style_colour_chooser" class="Question"  style="<?php echo $tile_style == 'ftxt' ? '' : 'display: none;'?>" >
-
-    <label for="tile_style_colour"><?php echo escape($lang['colour']); ?></label>
-    <input id="tile_style_colour" name="tlstylecolour" type="color" onchange="update_tile_preview_colour(this.value);" value="<?php echo $tile_colour; ?>">
-
-    <!-- Show/ hide colour picker/ selector -->
-    <script>
-        function update_tile_preview_colour(colour) {
-            jQuery('#previewdashtile').css('border-top', 'var(--space-8) solid ' + colour);
-        }
-
-        <?php if ('ftxt' == $tile_style) { ?>
-            jQuery(document).ready(function() {
-                if (jQuery('#tile_style_colour').val() != '') {
-                    update_tile_preview_colour('<?php echo $tile_colour; ?>');
-                }
-            });
-        <?php } else { ?>
-            jQuery(document).ready(function() {
-                if (jQuery('#tile_style_<?php echo $tile_style; ?>').prop('checked')) {
-                    jQuery('#tile_style_colour_chooser').show();
-                    update_tile_preview_colour('<?php echo $tile_colour; ?>');
-                }
-                jQuery('input:radio[name="tlstyle"]').change(function() {
-                    if (jQuery(this).prop('checked') && jQuery(this).val() == '<?php echo $tile_style; ?>') {
-                        jQuery('#tile_style_colour_chooser').show();
-                        update_tile_preview_colour('<?php echo $tile_colour; ?>');
-                    } else if (jQuery(this).prop('checked') && jQuery(this).val() !== '<?php echo $tile_style; ?>') {
-                        jQuery('#tile_style_colour_chooser').hide();
-                        jQuery('#tile_style_colour').removeAttr('style');
-                        jQuery('#previewdashtile').removeAttr('style');
-                    }
-                });
-            });
-        <?php } ?>
-    </script>
-    </div>
-    <div class="clearerleft"></div>
-    <?php
-}
-
-/**
- * Generate custom CSS style for a dashboard tile background color.
- *
- * @param array $buildstring An associative array containing tile style properties, including 'tlstylecolour' for the background color.
- * @return string A CSS style string for the background color (e.g., "background-color: #FFFFFF;"), or an empty string if no color is specified.
- */
-function get_tile_custom_style($buildstring)
-{
-    if (isset($buildstring['tlstylecolour'])) {
-        $return_value = "border-top: var(--space-8) solid ";
-
-        if (preg_match('/^[a-fA-F0-9]+$/', $buildstring['tlstylecolour'])) {
-            // this is a fix for supporting legacy hex values that do not have '#' at start
-            $return_value .= '#';
-        }
-
-        $return_value .= escape($buildstring['tlstylecolour']) . ';';
-
-        return $return_value;
-    } else {
-        return '';
     }
 }
 
