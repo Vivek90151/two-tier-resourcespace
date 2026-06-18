@@ -70,7 +70,7 @@ function csv_upload_process($filename, &$meta, $resource_types, &$messages, $csv
     $error_count = 0;
     $line_count = 0;
     $file = fopen($filename, 'r');
-    $headers = fgetcsv($file);
+    $headers = fgetcsv($file, escape: '\\');
 
     // Get list of possible resources to replace
     if (
@@ -175,7 +175,7 @@ function csv_upload_process($filename, &$meta, $resource_types, &$messages, $csv
     $spl_obj_file->seek(PHP_INT_MAX);
     $estimate_csv_row_count = $spl_obj_file->key() - 1;
 
-    while ((($line = fgetcsv($file)) !== false) && ($error_count < $max_error_count || $max_error_count == 0)) {
+    while ((($line = fgetcsv($file, escape: '\\')) !== false) && ($error_count < $max_error_count || $max_error_count == 0)) {
         $line_count++;
         if (count($line) != count($headers)) {    // check that the current row has the correct number of columns
             $logtext = "Error: Incorrect number of columns(" . count($line) . ") found on line " . $line_count . " (should be " . count($headers) . ")";
@@ -622,7 +622,7 @@ function csv_upload_process($filename, &$meta, $resource_types, &$messages, $csv
                 // cell value may be a series of values, but not for radio or drop down types
                 if (in_array($field_type, array_diff($FIXED_LIST_FIELD_TYPES, [FIELD_TYPE_DROP_DOWN_LIST, FIELD_TYPE_RADIO_BUTTONS]))) {
                     // Replace curly quotes with standard quotes and use split_keywords() to get separate entries
-                    $cell_value_array = array_map('trim', array_map('strval', str_getcsv($cell_value)));
+                    $cell_value_array = array_map('trim', array_map('strval', str_getcsv($cell_value, escape: '\\')));
                 } elseif (trim($cell_value) != "") {
                     // Make single value into a dummy array
                     $cell_value_array = array(trim($cell_value));
@@ -951,7 +951,7 @@ function csv_upload_get_info($filename, &$messages)
 
     $file = fopen($filename, 'r');
 
-    if (!($headers = fgetcsv($file))) {
+    if (!($headers = fgetcsv($file, escape: '\\'))) {
         array_push($messages, $lang["csv_upload_error_no_header"]);
         fclose($file);
         return false;
@@ -967,7 +967,7 @@ function csv_upload_get_info($filename, &$messages)
 
     $row = 0;
     $founddata = array();
-    while (($data = fgetcsv($file)) != false) {
+    while (($data = fgetcsv($file, escape: '\\')) != false) {
         // Get a sample of data here from the first 100 rows
         if (count($founddata) < $headercount && $row < 100) {
             for ($c = 0; $c < $headercount; $c++) {

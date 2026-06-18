@@ -89,7 +89,7 @@ function errorhandler($errno, $errstr, $errfile, $errline)
                         //Only show check installtion if you have permissions for that page.
                         ?>
                         <p style="font-size:14px;color:black;">You can <a href="<?php echo $baseurl?>/pages/check.php">check</a> your installation configuration.</p>
-                        <?php
+<?php
                     } ?>
                     <hr style="margin-top:20px;">
                     <?php
@@ -902,7 +902,7 @@ function CheckDBStruct($path, $verbose = false)
                 $hasPrimaryKey = false;
                 $pk_sql = "PRIMARY KEY (";
                 $n = 0;
-                while (($col = fgetcsv($f, 5000)) !== false) {
+                while (($col = fgetcsv($f, 5000, escape: '\\')) !== false) {
                     if ($sql .= "") {
                         $sql .= ", ";
                     }
@@ -970,7 +970,7 @@ function CheckDBStruct($path, $verbose = false)
                 $data = str_replace("table_", "data_", $file);
                 if (file_exists($path . "/" . $data)) {
                     $f = fopen($path . "/" . $data, "r");
-                    while (($row = fgetcsv($f, 5000)) !== false) {
+                    while (($row = fgetcsv($f, 5000, escape: '\\')) !== false) {
                         $sql_params = [];
                         for ($n = 0; $n < count($row); $n++) {
                             // Get type from table file
@@ -1029,7 +1029,7 @@ function CheckDBStruct($path, $verbose = false)
 
                 if (file_exists($path . "/" . $file)) {
                     $f = fopen($path . "/" . $file, "r");
-                    while (($col = fgetcsv($f, 5000)) !== false) {
+                    while (($col = fgetcsv($f, 5000, escape: '\\')) !== false) {
                         if (count($col) > 1) {
                             # Look for this column in the existing columns.
                             $found = false;
@@ -1094,7 +1094,7 @@ function CheckDBStruct($path, $verbose = false)
             if (file_exists($path . "/" . $file)) {
                 $done = array(); # List of indices already processed.
                 $f = fopen($path . "/" . $file, "r");
-                while (($col = fgetcsv($f, 5000)) !== false) {
+                while (($col = fgetcsv($f, 5000, escape: '\\')) !== false) {
                     # Look for this index in the existing indices.
                     $found = false;
                     for ($n = 0; $n < count($existing); $n++) {
@@ -1108,7 +1108,7 @@ function CheckDBStruct($path, $verbose = false)
                         # Fetch list of columns for this index
                         $cols = array();
                         $f2 = fopen($path . "/" . $file, "r");
-                        while (($col2 = fgetcsv($f2, 5000)) !== false) {
+                        while (($col2 = fgetcsv($f2, 5000, escape: '\\')) !== false) {
                             if ($col2[2] == $col[2]) { # Matching column
                                 # Add an index size if present, for indexing text fields
                                 $indexsize = "";

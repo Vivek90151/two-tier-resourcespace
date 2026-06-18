@@ -2545,7 +2545,7 @@ function update_field($resource, $field, $value, array &$errors = array(), $log 
                     // Quoting should normally use double quotes however accepting the whole string quoted with single quotes for legacy support.
                     $newvalues[] = substr($value, 1, -1);
                 } else {
-                    $newvalues = trim_array(str_getcsv($value));
+                    $newvalues = trim_array(str_getcsv($value, escape: '\\'));
                 }
             }
 
@@ -5911,7 +5911,7 @@ function autocomplete_blank_fields($resource, $force_run, $return_changes = fals
             $value = eval(eval_check_signed($field['autocomplete_macro']));
             if (in_array($field['type'], $FIXED_LIST_FIELD_TYPES)) {
                 # Multiple values are comma separated
-                $autovals = str_getcsv((string) $value);
+                $autovals = str_getcsv((string) $value, escape: '\\');
                 $autonodes = array();
                 # Establish an array of nodes from the values
                 foreach ($autovals as $autoval) {

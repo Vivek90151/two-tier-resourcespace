@@ -1648,8 +1648,8 @@ input.contactadminbutton  {
 
 p.tile_corner_box {
     position: absolute;
-    top: 130px;
-    left: 10px;
+    top: 140px;
+    left: 8px;
 
     display: inline-flex;
     height: 26px;
@@ -1665,7 +1665,7 @@ p.tile_corner_box {
     line-height: 150%;
 
     border-radius: var(--space-4);
-    background: var(--colour-transparency-black-50);
+    background: var(--colour-transparency-black-60);
 }
 .DraggableItem, .SortableItem {
     cursor:pointer;
@@ -1717,7 +1717,7 @@ p.tile_corner_box {
     border-radius: var(--space-8);
 }
 .DoubleWidthDashTile p.tile_corner_box {
-    top: 330px
+    top: 337px
 }
 .DoubleWidthDashTile .tile-special-icon i {
     font-size: 64px;
@@ -1770,11 +1770,13 @@ p.tile_corner_box {
 }
 .DashTileActions {
     display: flex;
+    position: relative;
     padding-top: var(--space-12);
     align-items: flex-end;
     gap: var(--space-8);
     flex: 1 0 0;
     border-radius: var(--space-4);
+    width: 100%;
 }
 
 .DashTileActions .tool {
@@ -1787,6 +1789,11 @@ p.tile_corner_box {
 
     border-radius: var(--space-4);
     background: var(--colour-surface-200);
+}
+.DashTileActions .tile_corner_box {
+    left: initial;
+    top: initial;
+    right: 0px;
 }
 
 @media (max-width:1366px) { /* Currently adjusted to accommodate the search bar, should be 1366px */
@@ -4681,7 +4688,6 @@ header.LoginHeader {
 #header-container .actions {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-12);
     grid-area: actions;
 }
@@ -4841,6 +4847,10 @@ header.LoginHeader {
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 18px */
+}
+
+#header-container .actions:not(:has(a.UploadButton)) {
+    justify-content: center;
 }
 
 /* ===== Responsive layouts ===== */
@@ -5089,6 +5099,10 @@ header.LoginHeader {
         align-items: center;
         gap: var(--space-12);
         white-space: nowrap;
+    }
+
+    #header-container:not(:has(.header-search-field)) .primary-navigation {
+        margin-left: auto;
     }
 
     #header-container a.UploadButton {

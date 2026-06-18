@@ -11,7 +11,6 @@ use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar\String_;
-use Rector\Contract\Rector\ConfigurableRectorInterface;
 use Rector\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -42,9 +41,9 @@ $data = str_getcsv($line);
 $file->setCsvControl(',');
 CODE,
                     <<<'CODE'
-fputcsv($handle, $row, escape: '');
-$data = str_getcsv($line, escape: '');
-$file->setCsvControl(',', escape: '');
+fputcsv($handle, $row, escape: '\\');
+$data = str_getcsv($line, escape: '\\');
+$file->setCsvControl(',', escape: '\\');
 CODE
                 ),
             ]
@@ -123,7 +122,7 @@ CODE
     private function createEscapeArg(): Arg
     {
         return new Arg(
-            value: new String_(''),
+            value: new String_('\\'),
             name: new Identifier('escape'),
         );
     }

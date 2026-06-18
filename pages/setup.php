@@ -857,7 +857,7 @@ if (get_post_bool('ajax')) {
 
                             if (file_exists($path . "/" . $data)) {
                                 $f = fopen($path . "/" . $data, "r");
-                                while (($row = fgetcsv($f, 5000)) !== false) {
+                                while (($row = fgetcsv($f, 5000, escape: '\\')) !== false) {
                                     for ($n = 0; $n < count($row); $n++) {
                                         if ($row[$n] == "''") {
                                             $row[$n] = null;
@@ -876,7 +876,7 @@ if (get_post_bool('ajax')) {
                                 $done = array(); # List of indices already processed.
                                 $f = fopen($path . "/" . $file, "r");
 
-                                while (($col = fgetcsv($f, 5000)) !== false) {
+                                while (($col = fgetcsv($f, 5000, escape: '\\')) !== false) {
                                     # Look for this index in the existing indices.
                                     $found = false;
                                     for ($n = 0; $n < count($existing); $n++) {
@@ -891,7 +891,7 @@ if (get_post_bool('ajax')) {
                                         $cols = array();
                                         $f2 = fopen($path . "/" . $file, "r");
 
-                                        while (($col2 = fgetcsv($f2, 5000)) !== false) {
+                                        while (($col2 = fgetcsv($f2, 5000, escape: '\\')) !== false) {
                                             if ($col2[2] == $col[2]) {
                                                 $cols[] = $col2[4];
                                             }

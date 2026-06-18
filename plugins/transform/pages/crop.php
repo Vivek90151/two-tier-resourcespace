@@ -143,7 +143,8 @@ if(file_exists($originalpath))
     }
 else
     {
-    $errors[] = "Unable to find original file";
+    error_alert($lang["missing_file"]);
+    exit();
     }
 
 // Check if an uncropped preview exists

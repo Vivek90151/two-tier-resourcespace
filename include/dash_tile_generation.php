@@ -485,7 +485,7 @@ function tile_freetext(array $tile, string|null $tile_id = null): void
         <p><?php echo escape(i18n_get_translated($tile["txt"])); ?></p>
         <?php
             if ($tile_id !== null) {
-                generate_dash_tile_toolbar($tile, $tile_id);
+                generate_dash_tile_toolbar($tile, $tile_id, $tile['resource_count'] !== 0);
             }
         ?>
     </div>

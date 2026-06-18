@@ -277,16 +277,21 @@ $page_title = get_page_title($pagename, pluginname());
         if ($pagename != "preview") {
             // Standard header
             $homepage_url = $baseurl . "/pages/home.php";
+            $homepage_name = $lang["home"];
+
             if ($use_theme_as_home) {
                 $homepage_url = $baseurl . "/pages/collections_featured.php";
+                $homepage_name = $lang["themes"];
             }
 
             if ($use_recent_as_home) {
                 $homepage_url = $baseurl . "/pages/search.php?search=" . urlencode('!last' . $recent_search_quantity);
+                $homepage_name = $lang["recent"];
             }
 
             if ($pagename == "login" || $pagename == "user_request" || $pagename == "user_password") {
                 $homepage_url = $baseurl . "/index.php";
+                $homepage_name = $lang["login_word"];
             }
 
             # Calculate Header Image Display
@@ -310,7 +315,7 @@ $page_title = get_page_title($pagename, pluginname());
                 <div id="header-container">
                     <div class="logo">
                         <a href="<?php echo sanitise_url($linkUrl); ?>" onclick="return CentralSpaceLoad(this, true);">
-                            <img src="<?php echo sanitise_url(get_header_image(false, true)); ?>" alt="<?php echo escape($applicationname); ?>">
+                            <img src="<?php echo sanitise_url(get_header_image(false, true)); ?>" alt="<?php echo escape($applicationname . " - " . $homepage_name); ?>">
                         </a>
                     </div>
 

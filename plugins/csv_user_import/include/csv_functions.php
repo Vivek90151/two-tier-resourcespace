@@ -27,7 +27,7 @@ function csv_user_import_process($csv_file, $user_group_id, &$messages, $process
     $file = fopen($csv_file, 'r');
 
     // Manipulate headers
-    $headers = fgetcsv($file);
+    $headers = fgetcsv($file, escape: '\\');
     if (!$headers) {
         array_push($messages, 'No header found');
         fclose($file);
@@ -65,7 +65,7 @@ function csv_user_import_process($csv_file, $user_group_id, &$messages, $process
 
     array_push($messages, '### Processing ' . count($headers) . ' columns ###');
 
-    while (( false !== ($line = fgetcsv($file)) ) && $error_count < $max_error_count) {
+    while (( false !== ($line = fgetcsv($file, escape: '\\')) ) && $error_count < $max_error_count) {
         $line_count++;
         if (array_filter(array_map('trim', $line)) == []) {
             continue;

@@ -1645,22 +1645,18 @@ function render_upgrade_available_tile($user)
  *                    - 'no_edit' (bool): Flag indicating if the tile is non-editable.
  *                    - 'url' (string|null): Optional URL for the tile's link.
  * @param string $tile_id The unique HTML ID of the tile used for identifying elements in the toolbar.
- * @return void Outputs HTML and JavaScript directly to the page for the tile toolbar.
+ * @param bool   $display_counter If true then a counter pill will be rendered opposite the dash tile actions
  */
-function generate_dash_tile_toolbar(array $tile, $tile_id)
+function generate_dash_tile_toolbar(array $tile, string $tile_id, bool $display_counter = false): void
 {
     global $baseurl_short, $lang, $managed_home_dash, $pagename;
 
-    if ($pagename == 'dash_tile_preview') {
-        return;
-    }
-
     $editlink = $baseurl_short . "pages/dash_tile.php?edit=" . (int) $tile['ref'];
-
-    if (!$managed_home_dash && (checkPermission_dashadmin() || checkPermission_dashuser())) {
-        ?>
-        <div id="DashTileActions_<?php echo escape(substr($tile_id, 18)); ?>" class="DashTileActions">
-            <?php
+    ?>
+    <div id="DashTileActions_<?php echo escape(substr($tile_id, 18)); ?>" class="DashTileActions">
+        <?php
+        if (!$managed_home_dash && (checkPermission_dashadmin() || checkPermission_dashuser())) {
+            if ($pagename !== 'dash_tile_preview') {
                 if ((checkPermission_dashadmin() || (isset($tile['all_users']) && $tile['all_users'] == 0)) && !(isset($tile['no_edit']) && $tile['no_edit'])) {
                     ?>
                         <div class="tool edit" title="<?php echo escape($lang["editdashtile"]); ?>">
@@ -1670,19 +1666,45 @@ function generate_dash_tile_toolbar(array $tile, $tile_id)
                         </div>
                     <?php
                 }
+                ?>
+                <div class="tool dash-delete_<?php echo escape(substr($tile_id, 18)); ?>" title="<?php echo escape($lang["dashtiledelete"]); ?>">
+                    <a href="#">
+                        <i class="icon-trash-2"></i>
+                    </a>
+                </div>
+                <?php
+            }
+        }
+        if ($display_counter) {
             ?>
-            <div class="tool dash-delete_<?php echo escape(substr($tile_id, 18)); ?>" title="<?php echo escape($lang["dashtiledelete"]); ?>">
-                <a href="#">
-                    <i class="icon-trash-2"></i>
-                </a>
-            </div>
+            <p class="tile_corner_box DisplayNone"></p>
+            <script>
+                jQuery(document).ready(function() {
+                    const TILE_ID = <?php echo encode_js_value($tile_id); ?>;
+                    const SHOW_RESOURCE_COUNT = <?php echo $tile['resource_count'] ? 'true' : 'false'; ?>;
+                    api('get_dash_search_data', {link: <?php echo encode_js_value($tile['link']); ?>}, function(response) {
+                        let tile_corner_box = jQuery('div#' + TILE_ID + ' p.tile_corner_box');
+                        if (SHOW_RESOURCE_COUNT) {
+                            let count_string = response.count + ' ' + (response.count > 1 ? '<?php echo escape($lang['items']); ?>': '<?php echo escape($lang['item']); ?>');
+                            tile_corner_box.html(count_string);
+                            tile_corner_box.removeClass('DisplayNone');
+                        } else if(response.count == 0) {
+                            jQuery('div#' + TILE_ID + ' p.no_resources').removeClass('DisplayNone');
+                        }
+                    },
+                    <?php echo generate_csrf_js_object('get_dash_search_data'); ?>,
+                    );
+                })
+            </script>
             <?php
-            ?>
-        </div>
-        <?php
+        }
+        ?>
+    </div>
+    <?php
+    if ($pagename === 'dash_tile_preview') {
+        return;
     }
     ?>
-
     <script>
         jQuery(document).ready(function() {
             if (pagename == "home") {
@@ -1784,7 +1806,7 @@ function dash_tile_featured_collection_get_top_resources()
                 JOIN resource r ON r.ref = cr.resource
                 JOIN collection c ON c.ref = cr.collection
             WHERE c.type = ? 
-            ORDER BY r.hit_count DESC
+            ORDER BY r.hit_count DESC LIMIT 500
         ", ['i', COLLECTION_TYPE_FEATURED], "schema");
     $resource_data = get_resource_data_batch($resources);
     $count = 0;
@@ -2152,10 +2174,6 @@ function get_dash_search_data($link = '', $promimg = 0)
                 $n++;
             }
         }
-        $searchdata["images"][] = [
-            "ref"       => -1,
-            "src"       => $baseurl . '/gfx/interface/dash_placeholder.svg'
-        ];
     }
     return $searchdata;
 }

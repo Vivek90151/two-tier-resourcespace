@@ -47,7 +47,7 @@ if (isset($user_pref_appearance) && !(isset($high_contrast_mode) && $high_contra
             --colour-surface-900: var(--colour-neutral-100);
             --colour-surface-1000: var(--colour-neutral-50);            
             --colour-surface-breadcrumb-background: var(--colour-surface-200);
-            --colour-surface-card-accent: var(---colour-neutral-800);
+            --colour-surface-card-accent: var(--colour-neutral-800);
             --colour-surface-card-content-background: var(--colour-neutral-850);
             --colour-surface-card-icon: var(--colour-neutral-500);
             --colour-surface-card-icon-background: var(--colour-neutral-800);

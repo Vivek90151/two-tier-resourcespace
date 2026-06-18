@@ -73,7 +73,7 @@ if (fgets($csvfile, 4) !== $bom) {
 $errors = [];
 $completed = 0;
 $curline = 0;
-while (($line = fgetcsv($csvfile)) !== false) {
+while (($line = fgetcsv($csvfile, escape: '\\')) !== false) {
     $curline++;
     if (count($line) != 2) {
         // check that the current row has the correct number of columns

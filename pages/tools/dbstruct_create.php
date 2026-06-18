@@ -27,7 +27,7 @@ if (getval("execute", "") != "" && enforcePostRequest(false)) {
             $f = fopen("../../dbstruct/table_" . $table . ".txt", "w");
             $describe = ps_query("describe `$table`");
             for ($m = 0; $m < count($describe); $m++) {
-                fputcsv($f, $describe[$m]);
+                fputcsv($f, $describe[$m], escape: '\\');
             }
             fclose($f);
         }
@@ -37,7 +37,7 @@ if (getval("execute", "") != "" && enforcePostRequest(false)) {
             $f = fopen("../../dbstruct/index_" . $table . ".txt", "w");
             $index = ps_query("show index from `$table`");
             for ($m = 0; $m < count($index); $m++) {
-                fputcsv($f, $index[$m]);
+                fputcsv($f, $index[$m], escape: '\\');
             }
             fclose($f);
         }
@@ -47,7 +47,7 @@ if (getval("execute", "") != "" && enforcePostRequest(false)) {
             $f = fopen("../../dbstruct/data_" . $table . ".txt", "w");
             $index = ps_query("select * from `$table`"); // Select * is fine here as no parameters
             for ($m = 0; $m < count($index); $m++) {
-                fputcsv($f, $index[$m]);
+                fputcsv($f, $index[$m], escape: '\\');
             }
             fclose($f);
         }
