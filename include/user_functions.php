@@ -1172,14 +1172,14 @@ function auto_create_user_account($hash = "")
         $message->templatevars = $templatevars;
         $message->eventdata = $eventdata;
         send_user_notification($approval_notify_users, $message);
-    }
 
-    // Send a confirmation e-mail to requester
-    send_mail(
-        $user_email,
-        "{$applicationname}: {$lang['account_request_label']}",
-        $lang['account_request_confirmation_email_to_requester']
-    );
+        // Send a confirmation e-mail to requester
+        send_mail(
+            $user_email,
+            "{$applicationname}: {$lang['account_request_label']}",
+            $lang['account_request_confirmation_email_to_requester']
+        );
+    }
 
     return true;
 }
@@ -3616,7 +3616,7 @@ function set_processing_message(string $message)
 {
     debug_function_call(__FUNCTION__, func_get_args());
     global $userref,$userprocessing_messages,$set_processing_message_first_call;
-    if (PHP_SAPI === "cli" ||  defined("API_CALL")) {
+    if (PHP_SAPI === "cli" || defined("API_CALL") || (isset($GLOBALS['iiif_userid']) && $GLOBALS['iiif_userid'] === $userref)) {
         // Messages don't work unless using browser
         return;
     }

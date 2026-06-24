@@ -1609,7 +1609,7 @@ function rs_quoted_printable_encode_subject($string, $encoding = 'UTF-8')
  * @param  array   $options - array of options to use instead of globals
  * @return void
  */
-function pager($break = true, $scrolltotop = true, $options = array())
+function pager($break = false, $scrolltotop = true, $options = array())
 {
     global $curpage, $url, $url_params, $totalpages, $offset, $per_page, $jumpcount, $pagename, $confirm_page_change, $lang;
 

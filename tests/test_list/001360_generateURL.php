@@ -40,6 +40,11 @@ $use_cases = [
         'input' => [$static_url, ['"onmouseover=\'alert(803)\'"' => '']],
         'expected' => "{$static_url}?%22onmouseover%3D%27alert%28803%29%27%22=",
     ],
+    [
+        'name' => 'URL param value should encode characters we might not want in HTML context too',
+        'input' => [$static_url, ['p1' => '">v1', 'p2' => '\'>v2', 'p3' => '&v3=test', 'p4' => ':v4;']],
+        'expected' => "{$static_url}?p1=%22%3Ev1&p2=%27%3Ev2&p3=%26v3%3Dtest&p4=%3Av4%3B",
+    ],
 ];
 foreach ($use_cases as $uc) {
     $result = generateURL(...$uc['input']);
