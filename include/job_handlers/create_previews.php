@@ -38,7 +38,7 @@ if (!$resdata) {
 }
 
 // Check to make sure that there is a valid file that we can generate previews for
-$valid_source = resource_has_preview_source($resource, $extension);
+$valid_source = resource_has_preview_source($resource, $extension, $alternative);
 
 // Only delete the existing previews if there is something that we can generate more from
 if ($resource > 0 && $valid_source) {

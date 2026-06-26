@@ -30,6 +30,12 @@ if ($current_system_upgrade_level === false) {
     $current_system_upgrade_level = 0;
 }
 
+// If sysvars upgrade level is greater than the defined SYSTEM_UPGRADE_LEVEL (e.g. an upgrade script was removed)
+// set it back to the SYSTEM_UPGRADE_LEVEL to prevent future upgrade scripts being missed
+if ($current_system_upgrade_level > SYSTEM_UPGRADE_LEVEL) {
+    set_sysvar(SYSVAR_CURRENT_UPGRADE_LEVEL, SYSTEM_UPGRADE_LEVEL);
+}
+
 // if the current system upgrade level is the same as that found in version.php then simply return as there is nothing to do
 if ($current_system_upgrade_level >= SYSTEM_UPGRADE_LEVEL) {
     // Nothing to do.

@@ -9346,12 +9346,12 @@ function can_upload_preview_image(int $ref): bool
  * @param int       $ref        Resource ID
  * @param string    $extension  Resource file extension
  */
-function resource_has_preview_source(int $ref, string $extension) : bool
+function resource_has_preview_source(int $ref, string $extension, int $alternative = -1) : bool
 {
     return file_exists( 
             in_array($extension, NON_PREVIEW_EXTENSIONS) ? 
-                get_preview_source_file($ref, 'jpg', false, true, -1, false) : 
-                get_resource_path($ref, true, '', false,  $extension)
+                get_preview_source_file($ref, 'jpg', false, true, $alternative, false) : 
+                get_resource_path($ref, true, '', false,  $extension, true, 1, false, '', $alternative)
         );
 }
 

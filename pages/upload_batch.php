@@ -1356,7 +1356,7 @@ jQuery(document).ready(function () {
             resume: true,
             limit: <?php echo $upload_concurrent_limit; ?>,
             endpoint: '<?php echo $baseurl ?>/pages/upload_batch.php',
-            retryDelays: [0, 1000, 3000, 5000],
+            retryDelays: <?php echo $upload_retry_delays; ?>,
             withCredentials: true,
             overridePatchMethod: true,
             removeFingerprintOnSuccess: true,

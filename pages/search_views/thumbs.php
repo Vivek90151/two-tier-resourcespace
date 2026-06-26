@@ -232,7 +232,7 @@ if ($use_selection_collection && in_array($ref, $selection_collection_resources)
                 ?>
                     <div class="resource-card-pill resource-card-status <?php echo escape($status_css); ?>">
                         <?php echo $workflow_html; ?>
-                        <span><?php echo isset($lang["status" . $result[$n]['archive']]) ? (escape($lang["status" . $result[$n]['archive']])) : ($lang["status"] . "&nbsp;" . $result[$n]['archive']); ?></span>
+                        <span><?php echo isset($lang["status" . $result[$n]['archive']]) ? (escape($lang["status" . $result[$n]['archive']])) : (escape($lang["status"] . "&nbsp;" . $result[$n]['archive'])); ?></span>
                     </div>
                 <?php
                 }

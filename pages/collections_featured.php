@@ -191,7 +191,7 @@ if ($parent > 0) {
 
     $branch_trail = array(
         array(
-            "title" => i18n_get_translated($field_data['title']),
+            "title" => i18n_get_translated($field_data['smart_theme_name']),
             "href"  => generateURL(
                 "{$baseurl_short}pages/collections_featured.php",
                 $general_url_params,
@@ -236,7 +236,7 @@ if ($parent > 0) {
         } elseif ($smart_fc_parent > 0) {
             echo escape(i18n_get_translated($node_data['name']));
         } elseif ($smart_rtf > 0) {
-            echo escape(i18n_get_translated($field_data['title']));
+            echo escape(i18n_get_translated($field_data['smart_theme_name']));
         } else {
             echo escape($lang["page-title_collections_featured"]);
         }

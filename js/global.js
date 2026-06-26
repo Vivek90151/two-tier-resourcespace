@@ -843,7 +843,7 @@ function ModalLoad(url,jump,fittosize,align)
         }
 
     // Window smaller than the modal? No point showing a modal as it wouldn't appear over the background.
-    if (jQuery(window).width() <= 1280) 
+    if (jQuery(window).width() <= 1235) 
         {
         return CentralSpaceLoad(url,jump);
         }

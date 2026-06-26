@@ -1172,8 +1172,8 @@ table.TableArray:not(:first-of-type) {margin-top: 5px;}
 .NewFlag { display: inline; font-size: 0.6em; margin-left: 5px; padding: 1px 3px; font-weight: bolder; }
 .Breadcrumbs {float:left;margin-top:4px;}
 .SearchBreadcrumbs {margin-top:15px;}
-.SearchTitle {padding: 0;margin-top:-10px;margin-bottom:5px;}
-.SearchTitle + p{padding-bottom: 7px;}
+.SearchTitle {padding: 0 ;margin: 20px 0 0 20px;}
+.SearchTitle + p {padding-bottom: 0; margin-left: 20px;}
 .SearchBreadcrumbs + .RecordHeader .SearchTitle {margin-top:0;}
 
 .CategoryBox {overflow:auto;width:414px;height:80px;padding:2px;font-size:1em;}
@@ -4972,6 +4972,7 @@ header.LoginHeader {
     }
 
     .header-search-field #search-filters-panel {
+        display: unset;
         padding: var(--space-24) var(--space-20) var(--space-16) var(--space-32);
     }
 
@@ -5012,6 +5013,8 @@ header.LoginHeader {
     }
 
     .header-search-field #search-filters-panel > button {
+        position: absolute;
+        top: var(--space-24);
         grid-column: 3;
         justify-self: end;
         display: flex;
@@ -5062,6 +5065,18 @@ header.LoginHeader {
 
     #header-container a.UploadButton {
         margin-left: var(--space-12);
+    }
+}
+
+@media (min-width: 1366px) and (max-width: 1580px) {
+    .header-search-field #search-filters-panel #SearchBoxPanel {
+        /*
+        max-width calculation based on:
+        - .header-search-field #search-filters-panel > button width & margin
+        - .header-search-field #search-filters-panel padding
+        - offset its own auto margin
+        */
+        max-width: calc(1366px - var(--space-48) - var(--space-16) - var(--space-32) - var(--space-20) - 75px);
     }
 }
 

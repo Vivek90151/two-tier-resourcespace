@@ -62,118 +62,119 @@ if ($submitted) {
 $allfields = get_resource_type_fields();
 
 include "../include/header.php";
-
-if (isset($info_text)) { ?>
-    <div class="PageInformal"><?php echo $info_text?></div>
-    <?php
-}
 ?>
 
-<h1><?php echo escape($lang["replaceresourcebatch"]); ?></h1>
-
-<p>
-    <?php
-    echo escape($lang["batch_replace_filename_intro"]);
-    render_help_link("resourceadmin/batch-replace");
-    ?>
-</p>
-
-<form action="<?php echo $baseurl_short?>pages/upload_replace_batch.php">
-    <?php generateFormToken("upload_replace_batch"); ?>
-    <input id="batch_replace_mode" type="hidden" name="batch_replace_mode" value="<?php echo escape($mode); ?>" />
-    <input id="submit" type="hidden" name="submit" value="true" />
-
-    <div class="Question">
-        <label for="batch_replace_alternatives"><?php echo escape($lang["batch_replace_alternatives"]); ?></label>
-        <table>
-            <tr>
-                <td>
-                    <label>
-                        <input
-                            type="radio"
-                            id="batch_replace_alternatives_0"
-                            name="batch_replace_alternatives"
-                            value="0"
-                        >
-                        <?php echo escape($lang["batch_replace_upload_resources"]); ?>
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>
-                        <input
-                            type="radio"
-                            id="batch_replace_alternatives_1"
-                            name="batch_replace_alternatives"
-                            value="1"
-                        >
-                        <?php echo escape($lang["batch_replace_upload_alternatives"]); ?>
-                    </label>
-                </td>
-            </tr>
-        </table>
-    </div>
-        
-    <div class="Question replace_originals">
-        <label for="use_resourceid"><?php echo escape($lang["batch_replace_use_resourceid"]); ?></label>
-        <input type="checkbox" value="yes" <?php echo ($filename_field == 0) ? " checked " : ''; ?> name="use_resourceid" id="use_resourceid"/>
-        <div class="clearerleft"></div>
-    </div>
-
-    <div class="Question replace_originals" id="question_filename_field" <?php echo ($filename_field == 0) ? "style='display:none;'" : ''; ?>>
-        <label for="filename_field"><?php echo escape($lang["batch_replace_filename_field_select"]); ?></label>
-        <select  class="stdwidth" name="filename_field" id="filename_field">
-            <option value="0">
-            <?php foreach ($allfields as $metadatafield) { ?>
-                <option value="<?php echo $metadatafield["ref"]; ?>" <?php echo ($metadatafield["ref"] == $filename_field) ? " selected" : ''; ?>>
-                    <?php echo i18n_get_translated($metadatafield["title"]); ?>
-                </option>    
-            <?php } ?>
-        </select>
-        <div class="clearerleft"></div>
-    </div>
-
-    <div class="Question">
-        <label class="replace_originals" for="batch_replace_col"><?php echo escape($lang["replacebatch_collection"]); ?></label>
-        <label class="replace_alternatives" for="batch_replace_col"><?php echo escape($lang["replacebatch_collection_alternatives"]); ?></label>
-        <input type="text" class="shrtwidth" value="<?php echo ($batch_replace_col > 0) ? escape($batch_replace_col) : ""; ?>" name="batch_replace_col" id="batch_replace_col" />
-        <div class="clearerleft"></div>
-    </div>
-
-    <div class="Question">
-        <label class="replace_originals" for="batch_replace_min"><?php echo escape($lang["replacebatch_resource_min"]); ?></label>
-        <label class="replace_alternatives" for="batch_replace_min"><?php echo escape($lang["replacebatch_resource_min_alternatives"]); ?></label>
-        <input type="text" class="shrtwidth" value="<?php echo ($batch_replace_min > 0) ? escape($batch_replace_min) : ""; ?>" name="batch_replace_min" id="batch_replace_min" />
-        <div class="clearerleft"></div>
-    </div>
-
-    <div class="Question">
-        <label class="replace_originals" for="batch_replace_max"><?php echo escape($lang["replacebatch_resource_max"]); ?></label>
-        <label class="replace_alternatives" for="batch_replace_max"><?php echo escape($lang["replacebatch_resource_max_alternatives"]); ?></label>
-        <input type="text" class="shrtwidth" value="<?php echo ($batch_replace_max > 0) ?  escape($batch_replace_max) : ""; ?>" name="batch_replace_max" id="batch_replace_max" />
-        <div class="clearerleft"></div>
-    </div>
-
-    <div class="Question replace_originals">
-        <label for="no_exif"><?php echo escape($lang["no_exif"]); ?></label>
-        <input type=checkbox checked id="no_exif" name="no_exif" value="yes">
-        <div class="clearerleft"></div>
-    </div>
-
-    <?php if ($offline_job_queue) { ?>
-        <div class="Question">
-            <label for="replace_batch_local"><?php echo escape($lang["replacebatchlocalfolder"]); ?></label>
-            <input type="checkbox" value="yes" <?php echo ($mode == "fetch_local") ? " checked" : ''; ?> name="replace_batch_local" id="replace_batch_local" onClick="if(this.checked){document.getElementById('batch_replace_mode').value = 'fetch_local';}else{document.getElementById('batch_replace_mode').value = 'upload'}" />
-            <div class="clearerleft"></div>
-        </div>
+<div class="BasicsBox">
+    <?php if (isset($info_text)) { ?>
+        <div class="PageInformal"><?php echo escape($info_text); ?></div>
     <?php } ?>
 
-    <div class="Question">
-        <input type="submit" value="<?php echo escape($lang["start"]); ?>" name="upload" id="upload_button" />
-        <div class="clearerleft"></div>
-    </div>
-</form>
+    <h1><?php echo escape($lang["replaceresourcebatch"]); ?></h1>
+
+    <p>
+        <?php
+        echo escape($lang["batch_replace_filename_intro"]);
+        render_help_link("resourceadmin/batch-replace");
+        ?>
+    </p>
+
+    <form action="<?php echo $baseurl_short?>pages/upload_replace_batch.php">
+        <?php generateFormToken("upload_replace_batch"); ?>
+        <input id="batch_replace_mode" type="hidden" name="batch_replace_mode" value="<?php echo escape($mode); ?>" />
+        <input id="submit" type="hidden" name="submit" value="true" />
+
+        <div class="Question">
+            <label for="batch_replace_alternatives"><?php echo escape($lang["batch_replace_alternatives"]); ?></label>
+            <table>
+                <tr>
+                    <td>
+                        <label>
+                            <input
+                                type="radio"
+                                id="batch_replace_alternatives_0"
+                                name="batch_replace_alternatives"
+                                value="0"
+                            >
+                            <?php echo escape($lang["batch_replace_upload_resources"]); ?>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input
+                                type="radio"
+                                id="batch_replace_alternatives_1"
+                                name="batch_replace_alternatives"
+                                value="1"
+                            >
+                            <?php echo escape($lang["batch_replace_upload_alternatives"]); ?>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+            
+        <div class="Question replace_originals">
+            <label for="use_resourceid"><?php echo escape($lang["batch_replace_use_resourceid"]); ?></label>
+            <input type="checkbox" value="yes" <?php echo ($filename_field == 0) ? " checked " : ''; ?> name="use_resourceid" id="use_resourceid"/>
+            <div class="clearerleft"></div>
+        </div>
+
+        <div class="Question replace_originals" id="question_filename_field" <?php echo ($filename_field == 0) ? "style='display:none;'" : ''; ?>>
+            <label for="filename_field"><?php echo escape($lang["batch_replace_filename_field_select"]); ?></label>
+            <select  class="stdwidth" name="filename_field" id="filename_field">
+                <option value="0">
+                <?php foreach ($allfields as $metadatafield) { ?>
+                    <option value="<?php echo $metadatafield["ref"]; ?>" <?php echo ($metadatafield["ref"] == $filename_field) ? " selected" : ''; ?>>
+                        <?php echo i18n_get_translated($metadatafield["title"]); ?>
+                    </option>    
+                <?php } ?>
+            </select>
+            <div class="clearerleft"></div>
+        </div>
+
+        <div class="Question">
+            <label class="replace_originals" for="batch_replace_col"><?php echo escape($lang["replacebatch_collection"]); ?></label>
+            <label class="replace_alternatives" for="batch_replace_col"><?php echo escape($lang["replacebatch_collection_alternatives"]); ?></label>
+            <input type="text" class="shrtwidth" value="<?php echo ($batch_replace_col > 0) ? escape($batch_replace_col) : ""; ?>" name="batch_replace_col" id="batch_replace_col" />
+            <div class="clearerleft"></div>
+        </div>
+
+        <div class="Question">
+            <label class="replace_originals" for="batch_replace_min"><?php echo escape($lang["replacebatch_resource_min"]); ?></label>
+            <label class="replace_alternatives" for="batch_replace_min"><?php echo escape($lang["replacebatch_resource_min_alternatives"]); ?></label>
+            <input type="text" class="shrtwidth" value="<?php echo ($batch_replace_min > 0) ? escape($batch_replace_min) : ""; ?>" name="batch_replace_min" id="batch_replace_min" />
+            <div class="clearerleft"></div>
+        </div>
+
+        <div class="Question">
+            <label class="replace_originals" for="batch_replace_max"><?php echo escape($lang["replacebatch_resource_max"]); ?></label>
+            <label class="replace_alternatives" for="batch_replace_max"><?php echo escape($lang["replacebatch_resource_max_alternatives"]); ?></label>
+            <input type="text" class="shrtwidth" value="<?php echo ($batch_replace_max > 0) ?  escape($batch_replace_max) : ""; ?>" name="batch_replace_max" id="batch_replace_max" />
+            <div class="clearerleft"></div>
+        </div>
+
+        <div class="Question replace_originals">
+            <label for="no_exif"><?php echo escape($lang["no_exif"]); ?></label>
+            <input type=checkbox checked id="no_exif" name="no_exif" value="yes">
+            <div class="clearerleft"></div>
+        </div>
+
+        <?php if ($offline_job_queue) { ?>
+            <div class="Question">
+                <label for="replace_batch_local"><?php echo escape($lang["replacebatchlocalfolder"]); ?></label>
+                <input type="checkbox" value="yes" <?php echo ($mode == "fetch_local") ? " checked" : ''; ?> name="replace_batch_local" id="replace_batch_local" onClick="if(this.checked){document.getElementById('batch_replace_mode').value = 'fetch_local';}else{document.getElementById('batch_replace_mode').value = 'upload'}" />
+                <div class="clearerleft"></div>
+            </div>
+        <?php } ?>
+
+        <div class="Question">
+            <input type="submit" value="<?php echo escape($lang["start"]); ?>" name="upload" id="upload_button" />
+            <div class="clearerleft"></div>
+        </div>
+    </form>
+</div>
 
 <script>
 jQuery(document).ready(function() {

@@ -1476,6 +1476,9 @@ $upload_chunk_size = '50mb';
 // This is the maximum number of concurrent file uploads allowed. Set to 1 to force single thread.
 $upload_concurrent_limit = 5;
 
+// Intervals to retry uploading a chunk, in milliseconds.
+$upload_retry_delays = '[0, 1000, 3000, 5000]';
+
 // Resource deletion state
 // When resources are deleted, the variable below can be set to move the resources into an alternative state instead of removing the resource and its files from the system entirely.
 //

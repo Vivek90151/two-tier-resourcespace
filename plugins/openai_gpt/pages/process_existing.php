@@ -89,6 +89,7 @@ if($cli_options !== false)
         if(in_array($option_name, array('o', 'overwrite')) && !in_array(strtolower($option_value),["false","no"]))
             {
             $overwrite=true;
+            $GLOBALS["openai_gpt_overwrite_data"] = true;
             }
         }
     }
