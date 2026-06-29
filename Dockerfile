@@ -2,12 +2,10 @@ FROM node:20
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
-
-RUN corepack enable && pnpm install
-
+# Copy complete project first
 COPY . .
 
-EXPOSE 3000
+# Enable pnpm and install dependencies
+RUN corepack enable && pnpm install
 
 CMD ["bash"]
