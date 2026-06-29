@@ -8,8 +8,5 @@ stage('Checkout') {
     }
 
         
-      stage("Tag Image") {
-        sh "docker tag ${JOB_NAME}:v1.${BUILD_ID} vivekbhardwaj581/${JOB_NAME}:v1.${BUILD_ID}"
-        sh "docker tag ${JOB_NAME}:v1.${BUILD_ID} vivekbhardwaj581/${JOB_NAME}:latest"
-    } 
+     
 }
