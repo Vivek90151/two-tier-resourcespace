@@ -18,4 +18,9 @@ node {
      sh "docker login -u vivekbhardwaj581 -p ${dockerhubpassword}"
 }
     }
+
+   stage("Push Image on docker hub"){
+        sh "docker push vivekbhardwaj581/${JOB_NAME}:v1.${BUILD_ID}"
+         sh "docker push vivekbhardwaj581/${JOB_NAME}:latest"
+    }
 }
